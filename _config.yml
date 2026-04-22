@@ -4,29 +4,26 @@
 
 # Site Bilgileri
 title: "Baydrogo"
+tagline: "Kişisel blog"
 description: "Kişisel blog"
-author:
-  name: "Drogo"
-  email: "eduman@duck.com"
+author: "Drogo"
 
-# Domain ayarı — kendi domain'inizi buraya yazın
-url: "https://baydrogo.com"   # örn: https://baydrogo.com
-baseurl: ""                    # Alt klasörde çalışmıyorsa boş bırakın
+# Domain ayarı
+url: "https://baydrogo.com"
+baseurl: ""
 
-# GitHub Pages / Jekyll ayarları
-theme: minima
+# jekyllBear teması
+remote_theme: knhash/jekyllBear
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-paginate
+  - jekyll-remote-theme
 
-# Sayfalama
-paginate: 10
-paginate_path: "/sayfa/:num/"
-
-# Permalink yapısı (Obsidian dosya adlarına uyumlu)
+# Permalink yapısı
 permalink: /:title/
+
 # Dil ve zaman dilimi
 lang: tr
 timezone: Europe/Istanbul
@@ -40,14 +37,13 @@ kramdown:
   syntax_highlighter_opts:
     css_class: "highlight"
 
-# Obsidian'dan gelen dosyalar için varsayılan front matter
+# Varsayılan front matter
 defaults:
   - scope:
       path: "_posts"
       type: "posts"
     values:
       layout: "post"
-      comments: false
 
 # Hariç tutulacak dosyalar
 exclude:
@@ -59,13 +55,7 @@ exclude:
   - README.md
   - scripts/
 
-# Feed
-feed:
-  posts_limit: 20
-
-# SEO
-twitter:
-  username: ""
-social:
-  name: "Drogo"
-  links: []
+# jekyllBear tema ayarları
+show_description: true
+show_image: false
+show_related: true
