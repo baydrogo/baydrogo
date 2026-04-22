@@ -26,8 +26,7 @@ paginate: 10
 paginate_path: "/sayfa/:num/"
 
 # Permalink yapısı (Obsidian dosya adlarına uyumlu)
-permalink: /:year/:month/:day/:title/
-
+permalink: /:title/
 # Dil ve zaman dilimi
 lang: tr
 timezone: Europe/Istanbul
