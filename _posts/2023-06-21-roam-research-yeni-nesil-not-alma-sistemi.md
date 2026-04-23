@@ -1,13 +1,12 @@
 ---
 title: "Roam Research: Yeni Nesil Not Alma Sistemi"
-date: 2026-04-24
+date: 2023-06-21
 description: Kategorik not almanın ötesine geçen, çift yönlü bağlantılarıyla düşünme sürecini destekleyen Roam Research'ü inceliyorum.
 tags:
   - not-alma
   - roam-research
   - dijital-akademi
 ---
-# Roam Research: Yeni Nesil Not Alma Sistemi
 
 Akademik üretim artık dijital ortamda gerçekleşiyor. Metin editörleri zaten uzunca bir süredir yaygın bir şekilde kullanılmakta. Dijital araçlar da gün geçtikçe çeşitleniyor. Not alma uygulamalarının bu araçlar içerisinde önemli bir yeri var. Araştırmacılar, notlarına her yerde ulaşabilecekleri uygulamalara ihtiyaç duyuyorlar. Sesli notlar veya dijital kalemlerin kullanımı da giderek artıyor. [Evernote](https://evernote.com/) gibi uzun süredir piyasayı domine eden not alma uygulamarına artık yenileri ekleniyor. Bu yazı da yeni uygulamalardan birine, akademik yazım sürecine eşlik edebilecek yeni nesil dijital not alma uygulamaları arasında öncü bir yeri olan [Roam Research](https://roamresearch.com/)‘e odaklanıyor. Roam Research hakkında blogda yer alacak serinin girişi niteliğinde olacak bu yazı, programın temel özelliklerini ele alacak.
 
