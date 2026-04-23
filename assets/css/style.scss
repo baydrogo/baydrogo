@@ -478,3 +478,9 @@ body {
   .newsletter-form form { flex-direction: column; }
   .newsletter-form input[type="email"] { min-width: unset; }
 }
+
+.author-link {
+  color: $color-muted;
+  text-decoration: none;
+  &:hover { color: $color-accent; text-decoration: underline; }
+}
