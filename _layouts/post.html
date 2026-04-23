@@ -17,12 +17,21 @@ layout: default
     {{ content }}
   </div>
 
-  {% assign other_posts = site.posts | where_exp: "p", "p.url != page.url" %}
-  {% if other_posts.size > 0 %}
+  {% assign related = "" | split: "" %}
+  {% for tag in page.tags %}
+    {% assign tagged = site.posts | where_exp: "p", "p.tags contains tag" %}
+    {% for p in tagged %}
+      {% if p.url != page.url %}
+        {% assign related = related | push: p %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+  {% assign related = related | uniq %}
+  {% if related.size > 0 %}
   <div class="related-posts">
-    <p class="section-label">Bunları da okuyabilirsin</p>
+    <p class="section-label">Bağlantılı yazılar</p>
     <ul>
-      {% for p in other_posts limit:5 %}
+      {% for p in related limit:5 %}
         <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
       {% endfor %}
     </ul>
