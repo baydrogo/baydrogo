@@ -16,7 +16,7 @@
       <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
       <nav class="site-nav">
         <a href="{{ '/hakkinda' | relative_url }}">Hakkında</a>
-        <a href="{{ '/etiketler' | relative_url }}">Konular</a>
+        <a href="{{ '/etiketler' | relative_url }}">Etiketler</a>
       </nav>
     </div>
   </header>
@@ -32,13 +32,6 @@
       <p>{{ site.author }} &mdash; <a href="{{ '/feed.xml' | relative_url }}">RSS</a></p>
     </div>
   </footer>
-<script>
-  document.querySelectorAll('.post-content a').forEach(function(link) {
-    if (link.hostname !== window.location.hostname) {
-      link.setAttribute('target', '_blank');
-      link.setAttribute('rel', 'noopener noreferrer');
-    }
-  });
-</script>
+
 </body>
 </html>
