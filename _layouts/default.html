@@ -32,6 +32,13 @@
       <p>{{ site.author }} &mdash; <a href="{{ '/feed.xml' | relative_url }}">RSS</a></p>
     </div>
   </footer>
-
+<script>
+  document.querySelectorAll('.post-content a').forEach(function(link) {
+    if (link.hostname !== window.location.hostname) {
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    }
+  });
+</script>
 </body>
 </html>
