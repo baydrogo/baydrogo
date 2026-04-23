@@ -1,0 +1,21 @@
+---
+title: "Referans Yönetim Aracı: Zotero"
+date: 2023-05-23
+description: "Açık kaynaklı ve ücretsiz referans yönetim yazılımı Zotero'yu akademik yazım sürecindeki işlevleriyle ele alıyorum."
+tags: [zotero]
+author: "Baydrogo"
+---
+
+Akademisyenlerin okudukları metinleri arşivleyebilmeleri, aldıkları notları etiketlerine göre ayırabilmeleri ve onlara bir kitap veya makale yazarken referans vermeleri onlar için birer külfete dönüşebilmekte. Her bir araştırmacının bu hususlara yönelik kendine has bir yöntemi olabilir. Zaten en iyi yöntem de alışıldık ve kişiye özgü olandır. Fakat günümüzde akademisyenlere araştırmaları için hazırlık ve yazım sürecinde yardımcı olan çeşitli dijital araçlar da üretilmekte. Hatta bu araçlar "akademik pazar"da önemli bir yer tutuyor. Bu yazı da bu ürünlerden birine, referans yönetimi yazılımı olan Zotero'ya odaklanmakta.
+
+Öncelikle Zotero'nun benzerleri olan Mendeley, EndNote, Citavi gibi diğer referans yönetimi yazılımlarından farkı açık kaynaklı olması. Açık kaynak yazılım öncelikle ilkesel bir tutum. Kişilerin üzerinde inisiyatif hakkına sahip olmadığı kapalı kilitler yerine, kaynak kodlarını kullanıcılarına açan yazılımlara verilen bir isim. Bu sayede kullandığı yazılımın kaynak kodlarına ulaşabilen kullanıcılar, denetim, düzenleme ve geliştirme hakkına sahip olabiliyorlar. Bu bağlamda açık kaynak yazılımlar dijital alanda giderek yaygınlaşan bir siyasal tutumun da bir ifadesi haline gelmekte. Zotero da açık kaynaklı bir yazılım. Bu sayede teknik bilgiye sahip kullanıcılar eklentiler yazarak Zotero'nun geliştirilmesine ön ayak oluyorlar.
+
+Ayrıca Zotero'nun en önemli avantajı ücretsiz olması. Türkiye'de ürün tanımı ve pazarlaması daha iyi yapıldığı için Mendeley ve EndNote gibi yazılımlar daha bilinir olsa da bu alanda Zotero da önemli bir yere sahip. Üniversiteler Mendeley ve Zotero gibi yazılımlara yönelmek yerine yüksek miktarda paralar verip EndNote gibi yazılımları satın alıyorlar. Oysa ki üniversite kendi tez yazım kılavuzunu da Zotero'ya entegre edip araştırmacılarına bu programı tanıtabilir.
+
+Zotero bir referans yönetim yazılımı. Yani asıl özelliği referansları düzenli bir şekilde toplamak ve Microsoft Word (Open Office, Libre Office) eklentisi sayesinde kolaylıkla referans/atıf verilmesini sağlamak. İstenilen referans yöntemi (Chicago veya MLA gibi) program sayesinde kolay bir şekilde kullanılmakta, yazım sürecinin herhangi bir aşamasında yine oldukça kolay bir şekilde değiştirilebilmekte. Örneğin bir makale yazıyorsunuz ve Chicago atıf düzenini kullanıyorsunuz. Fakat makaleyi göndereceğiniz dergi sizden MLA atıf sisteminin 6. versiyonuna göre makaleyi kabul edebileceğini belirtti. Zotero'nun Word eklentisi bu dönüşüm işlemini kolay bir şekilde gerçekleştiriyor. Ayrıca programın Word eklentisi tek bir tuşla geniş çaplı metinlerin bibliyografyalarını da oluşturabilmekte.
+
+Zotero aynı zamanda bir sanal kütüphane hüviyetinde. Akademisyenler bu yazılım sayesinde okudukları veya okuyacakları kitap, makale gibi dökümanları arşivlemek, bunları kategorilerine göre ayırabilmek, onlar hakkında notlar alabilmek ve etiketler yardımıyla bu dökümanlara kolayca ulaşabilme imkânına sahip. Bu sebeple Zotero tek bir çalışma için kullanılabilecek bir programdan öte, daha uzun süreçli akademik yazım süreçleri için oldukça işlevsel bir araç.
+
+Zotero'nun PDF'leri de bulut sistemiyle arşivlemesini istiyorsanız ücretsiz olarak sunulan alan 300 MB. Bununla birlikte dökümanların meta verilerini arşivlemek sınırsız ve ücretsiz. Dökümanları Zotero'ya eklemenin çeşitli yolları mevcut. Kitap veya makale gibi dökümanlar internet tarayıcısı eklentisi sayesinde eklenebilirken, ayrıca program kendi içerisinde yer alan sihirbazı ile ISBN veya DOI numarası ile de dökümanların meta verilerini çekebilmekte.
+
+Zotero'nun genel özelliklerini verirken son olarak iki unsuru da belirtmek gerekiyor. Bunlardan birisi ortak çalışmaya dayalı araştırmalar için işlevsel olması. Zotero'da çeşitli gruplar oluşturup bu grupları istediğiniz kişiyle sınırlandırabilir, bu grup içerisinde döküman ve not paylaşımı yapabilirsiniz. Son olarak bahsedeceğim özellik ise "Beslemeler" özelliği. Bu özellik sayesinde akademik dergilerin RSS hizmetinden faydalanarak Zotero'ya RSS adresi eklenebilir ve güncel literatür takibi yapabilirsiniz.
