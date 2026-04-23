@@ -3,50 +3,16 @@ layout: default
 ---
 
 <div class="home">
-
-  <h1 class="page-heading">Son Yazılar</h1>
-
-  {% if paginator.posts %}
-    {% assign posts = paginator.posts %}
-  {% else %}
-    {% assign posts = site.posts %}
+  {% if site.description %}
+    <p class="site-description">{{ site.description }}</p>
   {% endif %}
 
-  <ul class="post-list">
-    {% for post in posts %}
-      <li class="post-item">
-        <h2 class="post-title">
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        </h2>
-        <div class="post-meta">
-          <time datetime="{{ post.date | date_to_xmlschema }}">
-            {{ post.date | date: "%-d %B %Y" }}
-          </time>
-          {% if post.categories %}
-            &middot;
-            {% for category in post.categories %}
-              <span class="category">{{ category }}</span>
-            {% endfor %}
-          {% endif %}
-        </div>
-        {% if post.excerpt %}
-          <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
-        {% endif %}
-        <a class="read-more" href="{{ post.url | relative_url }}">Devamını oku &rarr;</a>
-      </li>
+  <div class="post-list">
+    {% for post in site.posts %}
+      <div class="post-row">
+        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </div>
     {% endfor %}
-  </ul>
-
-  {% if paginator.total_pages > 1 %}
-    <nav class="pagination">
-      {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | relative_url }}">&larr; Yeni yazılar</a>
-      {% endif %}
-      <span>Sayfa {{ paginator.page }} / {{ paginator.total_pages }}</span>
-      {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | relative_url }}">Eski yazılar &rarr;</a>
-      {% endif %}
-    </nav>
-  {% endif %}
-
+  </div>
 </div>

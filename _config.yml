@@ -2,55 +2,33 @@
 #  Baydrogo Blog — Jekyll Konfigürasyonu
 # =============================================
 
-# Site Bilgileri
 title: "Baydrogo"
 description: "Kişisel blog"
-author:
-  name: "Drogo"
-  email: "eduman@duck.com"
+author: "Drogo"
 
-# Domain ayarı — kendi domain'inizi buraya yazın
-url: "https://baydrogo.com"   # örn: https://baydrogo.com
-baseurl: ""                    # Alt klasörde çalışmıyorsa boş bırakın
+url: "https://baydrogo.com"
+baseurl: ""
 
-# GitHub Pages / Jekyll ayarları
-theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-paginate
 
-# Sayfalama
-paginate: 10
-paginate_path: "/sayfa/:num/"
+permalink: /:title/
 
-# Permalink yapısı (Obsidian dosya adlarına uyumlu)
-permalink: /:year/:month/:day/:title/
-
-# Dil ve zaman dilimi
 lang: tr
 timezone: Europe/Istanbul
 
-# Markdown ayarları
 markdown: kramdown
 highlighter: rouge
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    css_class: "highlight"
 
-# Obsidian'dan gelen dosyalar için varsayılan front matter
 defaults:
   - scope:
       path: "_posts"
       type: "posts"
     values:
       layout: "post"
-      comments: false
 
-# Hariç tutulacak dosyalar
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -59,14 +37,3 @@ exclude:
   - .obsidian
   - README.md
   - scripts/
-
-# Feed
-feed:
-  posts_limit: 20
-
-# SEO
-twitter:
-  username: ""
-social:
-  name: "Drogo"
-  links: []
