@@ -7,10 +7,34 @@ layout: default
     <p class="site-description">{{ site.description }}</p>
   {% endif %}
 
+  {% assign latest = site.posts.first %}
+  {% if latest %}
+  <div class="latest-post">
+    <p class="section-label">Son Yazı</p>
+    <h2 class="latest-title"><a href="{{ latest.url | relative_url }}">{{ latest.title }}</a></h2>
+    <p class="post-meta">{{ latest.date | date: "%Y · %m" }}</p>
+    <p class="latest-excerpt">{% if latest.description %}{{ latest.description }}{% else %}{{ latest.excerpt | strip_html | truncate: 160 }}{% endif %}</p>
+    <a href="{{ latest.url | relative_url }}" class="read-more">Devamını oku →</a>
+  </div>
+  {% endif %}
+
+  {% if site.tags.size > 0 %}
+  <div class="topics-section">
+    <p class="section-label">Konular</p>
+    <div class="tag-cloud">
+      {% assign sorted_tags = site.tags | sort %}
+      {% for tag in sorted_tags %}
+        <a href="{{ '/etiketler' | relative_url }}#{{ tag[0] | slugify }}" class="tag-link">{{ tag[0] }}</a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
   <div class="post-list">
+    <p class="section-label">Yazılar</p>
     {% for post in site.posts %}
       <div class="post-row">
-        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <span class="post-date">{{ post.date | date: "%Y · %m" }}</span>
         <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
       </div>
     {% endfor %}

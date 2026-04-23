@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<div class="tags-page">
+  <h1>{{ page.title }}</h1>
+  {% assign sorted_tags = site.tags | sort %}
+  {% for tag in sorted_tags %}
+    <div class="tag-group" id="{{ tag[0] | slugify }}">
+      <h2 class="tag-heading">{{ tag[0] }}</h2>
+      <ul>
+        {% assign sorted_posts = tag[1] | sort: 'date' | reverse %}
+        {% for post in sorted_posts %}
+          <li>
+            <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+</div>

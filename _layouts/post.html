@@ -5,11 +5,33 @@ layout: default
 <article class="post">
   <header class="post-header">
     <h1>{{ page.title }}</h1>
-    <p class="post-meta">{{ page.date | date: "%Y-%m-%d" }}{% if page.categories %} &middot; {% for cat in page.categories %}{{ cat }}{% unless forloop.last %}, {% endunless %}{% endfor %}{% endif %}</p>
+    <p class="post-meta">{{ page.date | date: "%Y-%m-%d" }}{% if page.tags.size > 0 %} &middot; {% for tag in page.tags %}<a href="{{ '/etiketler' | relative_url }}#{{ tag | slugify }}" class="tag-link-inline">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}{% endif %}</p>
   </header>
   <div class="post-content">
     {{ content }}
   </div>
+
+  {% assign other_posts = site.posts | where_exp: "p", "p.url != page.url" %}
+  {% if other_posts.size > 0 %}
+  <div class="related-posts">
+    <p class="section-label">Bunları da okuyabilirsin</p>
+    <ul>
+      {% for p in other_posts limit:5 %}
+        <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <div class="newsletter-form">
+    <p class="section-label">Güncelleme al</p>
+    <p class="newsletter-desc">Yeni yazılardan haberdar olmak için e-posta ile takip et.</p>
+    <form action="https://buttondown.email/api/emails/embed-subscribe/baydrogo" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.email/baydrogo', 'popupwindow')">
+      <input type="email" name="email" placeholder="E-posta adresin" required />
+      <button type="submit">Abone ol</button>
+    </form>
+  </div>
+
   <div class="post-nav">
     {% if page.previous.url %}<a href="{{ page.previous.url | relative_url }}">&larr; {{ page.previous.title }}</a>{% endif %}
     {% if page.next.url %}<a href="{{ page.next.url | relative_url }}" style="float:right">{{ page.next.title }} &rarr;</a>{% endif %}
