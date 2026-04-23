@@ -1,4 +1,4 @@
 ---
 layout: home
-title: Ana Sayfa
+title: Baydrogo
 ---
