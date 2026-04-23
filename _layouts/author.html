@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<div class="author-page">
+  <h1>{{ page.display_name }}</h1>
+  {% if page.bio %}<p class="author-bio">{{ page.bio }}</p>{% endif %}
+
+  <div class="post-list">
+    <p class="section-label">Yazılar</p>
+    {% assign author_posts = site.posts | where: "author", page.display_name %}
+    {% if page.is_default %}
+      {% assign author_posts = site.posts | where_exp: "p", "p.author == nil or p.author == page.display_name" %}
+    {% endif %}
+    {% for post in author_posts %}
+      <div class="post-row">
+        <span class="post-date">{{ post.date | date: "%Y · %m" }}</span>
+        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
