@@ -36,9 +36,13 @@ module Baydrogo
     private
 
     # [metin](/adres/) ya da [metin](https://site/adres/) — görseller (![…]) hariç
+    # Yerel `jekyll serve` site.url'yi localhost yapar; asıl alan adı CNAME'den de okunur.
     def desen(site)
-      alan = Regexp.escape(site.config["url"].to_s.sub(%r{\Ahttps?://(www\.)?}, ""))
-      @desen ||= %r{(?<!!)\[[^\]]*\]\((?:https?://(?:www\.)?#{alan})?(/[^)\s]*)}
+      cname = File.join(site.source, "CNAME")
+      alanlar = [site.config["url"].to_s, File.exist?(cname) ? File.read(cname) : ""]
+                .map { |a| a.strip.sub(%r{\Ahttps?://(www\.)?}, "").chomp("/") }
+                .reject(&:empty?).uniq.map { |a| Regexp.escape(a) }
+      @desen ||= %r{(?<!!)\[[^\]]*\]\((?:https?://(?:www\.)?(?:#{alanlar.join("|")}))?(/[^)\s]*)}
     end
 
     def normal(adres)

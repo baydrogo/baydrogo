@@ -1,12 +1,13 @@
 {%- assign related = "" | split: "" -%}
+{%- assign gb_adresler = page.geri_baglantilar | map: "url" -%}
 {%- for tag in page.tags -%}
   {%- assign tagged = site.posts | where_exp: "p", "p.tags contains tag" -%}
-  {%- for p in tagged -%}{%- if p.url != page.url -%}{%- assign related = related | push: p -%}{%- endif -%}{%- endfor -%}
+  {%- for p in tagged -%}{%- if p.url != page.url -%}{%- unless gb_adresler contains p.url -%}{%- assign related = related | push: p -%}{%- endunless -%}{%- endif -%}{%- endfor -%}
 {%- endfor -%}
 {%- assign related = related | uniq -%}
 {%- if related.size > 0 %}
 <section class="ilgili">
-  <p class="bolum-etiketi">Bağlantılı</p>
+  <p class="bolum-etiketi">Benzer yazılar</p>
   <ul class="liste">
     {%- for p in related limit: 5 %}
     {% include satir.html girdi=p %}

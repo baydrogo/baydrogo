@@ -1,7 +1,7 @@
 {%- assign gb = page.geri_baglantilar -%}
 {%- if gb and gb.size > 0 %}
 <section class="geri-baglantilar">
-  <h2>{% if page.tur == "not" %}Bu nota{% elsif page.tur == "yazi" %}Bu yazıya{% else %}Bu sayfaya{% endif %} bağlantı verenler</h2>
+  <h2>Bağlantılı yazılar</h2>
   <ul>
     {%- for b in gb %}
     <li>

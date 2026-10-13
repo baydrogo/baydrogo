@@ -8,3 +8,4 @@ vendor/
 .obsidian/
 CLAUDE.local.md
 .claude/
+Gemfile.lock
