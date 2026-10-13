@@ -96,6 +96,13 @@ a { color: var(--mavi); text-underline-offset: 0.15em; text-decoration-thickness
 }
 
 .tanitim { margin: 0 0 1.75rem; color: var(--soluk); }
+.kenar-gorsel {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: -0.5rem 0 1.75rem;
+  border-radius: 3px;
+}
 
 .menu { display: flex; flex-direction: column; gap: 0.2rem; margin-bottom: 2rem; }
 .menu a { color: var(--metin); text-decoration: none; width: fit-content; }
@@ -299,6 +306,7 @@ a { color: var(--mavi); text-underline-offset: 0.15em; text-decoration-thickness
     border-bottom: 1px solid var(--cizgi);
   }
   .tanitim { margin-bottom: 1rem; }
+  .kenar-gorsel { display: none; }
   .menu { flex-direction: row; flex-wrap: wrap; gap: 0.2rem 1.1rem; margin-bottom: 0; }
   .kenar-bolum { display: none; }
 }

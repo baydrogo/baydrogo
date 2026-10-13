@@ -6,6 +6,9 @@
     </div>
     <p class="tanitim p-note">{{ site.description }}</p>
   </div>
+  {%- if include.bolum == "akis" %}
+  <img class="kenar-gorsel" src="{{ '/assets/img/drogo-oda.webp' | relative_url }}" alt="Kaledeki odasında, çöle bakan pencerenin önünde masada yazı yazan bir subay" width="480" height="384">
+  {%- endif %}
 
   <nav class="menu">
     <a href="{{ '/' | relative_url }}"{% if include.bolum == "akis" %} aria-current="page"{% endif %}>Akış</a>
