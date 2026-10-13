@@ -306,7 +306,7 @@ a { color: var(--mavi); text-underline-offset: 0.15em; text-decoration-thickness
     border-bottom: 1px solid var(--cizgi);
   }
   .tanitim { margin-bottom: 1rem; }
-  .kenar-gorsel { display: none; }
+  .kenar-gorsel { margin: 0 0 1rem; }
   .menu { flex-direction: row; flex-wrap: wrap; gap: 0.2rem 1.1rem; margin-bottom: 0; }
   .kenar-bolum { display: none; }
 }
