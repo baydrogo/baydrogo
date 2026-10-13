@@ -1,0 +1,31 @@
+---
+layout: null
+permalink: /feed.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>{{ site.title | xml_escape }}</title>
+    <link>{{ '/' | absolute_url }}</link>
+    <description>{{ site.description | default: site.title | xml_escape }}</description>
+    <language>{{ site.lang }}</language>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    <atom:link href="{{ '/feed.xml' | absolute_url }}" rel="self" type="application/rss+xml"/>
+    {%- for g in site.posts limit: 30 %}
+    <item>
+      {%- comment %}Notlar başlıksız gider; micro.blog ve okuyucular bunları kısa not olarak gösterir.{% endcomment %}
+      {%- if g.tur != "not" %}
+      <title>{{ g.title | xml_escape }}</title>
+      {%- endif %}
+      <link>{{ g.url | absolute_url }}</link>
+      <guid isPermaLink="true">{{ g.url | absolute_url }}</guid>
+      <pubDate>{{ g.date | date_to_rfc822 }}</pubDate>
+      <dc:creator>{{ g.author | default: site.author | xml_escape }}</dc:creator>
+      {%- for e in g.tags %}
+      <category>{{ e | xml_escape }}</category>
+      {%- endfor %}
+      <description>{{ g.content | xml_escape }}</description>
+    </item>
+    {%- endfor %}
+  </channel>
+</rss>

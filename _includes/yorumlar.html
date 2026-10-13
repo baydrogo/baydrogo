@@ -1,0 +1,55 @@
+{%- comment -%}
+  Onaylı yorumlar _data/yorumlar/<anahtar>/<id>.json dosyalarından derleme sırasında okunur.
+  Yanıtlar tek seviyelidir: "ust" alanı olan yorum, o yorumun altında görünür.
+{%- endcomment -%}
+{%- assign anahtar = page.url | slugify -%}
+{%- assign kume = site.data.yorumlar[anahtar] -%}
+{%- assign liste = "" | split: "" -%}
+{%- for k in kume -%}{%- assign liste = liste | push: k[1] -%}{%- endfor -%}
+{%- assign liste = liste | sort: "tarih" -%}
+{%- assign kokler = liste | where_exp: "y", "y.ust == nil" -%}
+
+{%- if site.yorum.worker_url and site.yorum.turnstile_site_key -%}{%- assign yorum_formu = true -%}{%- endif -%}
+{%- if liste.size > 0 or yorum_formu %}
+<section id="yorumlar" class="yorumlar">
+  <p class="section-label">Yorumlar{% if liste.size > 0 %} ({{ liste.size }}){% endif %}</p>
+
+  {%- if kokler.size == 0 %}
+  <p class="yorum-yok">Henüz yorum yok.</p>
+  {%- endif %}
+
+  {%- for y in kokler %}
+  <article class="yorum" id="yorum-{{ y.id }}">
+    <p class="yorum-meta"><strong>{{ y.ad | escape }}</strong>, {{ y.tarih | date: "%d.%m.%Y" }}{% if site.yorum.worker_url %} <a href="#yorum-formu" class="yorum-yanitla" data-id="{{ y.id }}" data-ad="{{ y.ad | escape }}">Yanıtla</a>{% endif %}</p>
+    <div class="yorum-metin">{{ y.metin | escape | newline_to_br }}</div>
+    {%- assign yanitlar = liste | where: "ust", y.id %}
+    {%- if yanitlar.size > 0 %}
+    <div class="yorum-yanitlar">
+      {%- for r in yanitlar %}
+      <article class="yorum" id="yorum-{{ r.id }}">
+        <p class="yorum-meta"><strong>{{ r.ad | escape }}</strong>, {{ r.tarih | date: "%d.%m.%Y" }}{% if r.yanitlanan %} · {{ r.yanitlanan | escape }} adlı kişiye yanıt{% endif %}{% if site.yorum.worker_url %} <a href="#yorum-formu" class="yorum-yanitla" data-id="{{ y.id }}" data-ad="{{ r.ad | escape }}">Yanıtla</a>{% endif %}</p>
+        <div class="yorum-metin">{{ r.metin | escape | newline_to_br }}</div>
+      </article>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+  </article>
+  {%- endfor %}
+
+  {%- if yorum_formu %}
+  <form id="yorum-formu" class="yorum-formu" data-worker="{{ site.yorum.worker_url }}" data-anahtar="{{ anahtar }}" data-yol="{{ page.url }}">
+    <h3>Yorum yaz</h3>
+    <p class="yorum-yanit-bilgi" hidden><span></span> <a href="#" class="yorum-yanit-iptal">vazgeç</a></p>
+    <label>İsim <input name="ad" maxlength="60" required autocomplete="name"></label>
+    <label>Yorum <textarea name="metin" maxlength="4000" rows="6" required></textarea></label>
+    <label class="yorum-bal" aria-hidden="true">Web sitesi <input name="website" tabindex="-1" autocomplete="off"></label>
+    <div class="cf-turnstile" data-sitekey="{{ site.yorum.turnstile_site_key }}" data-language="tr"></div>
+    <button type="submit">Gönder</button>
+    <p class="yorum-durum" role="status"></p>
+    <p class="yorum-not">Yorumlar onaylandıktan sonra yayımlanır. E-posta adresi istenmez.</p>
+  </form>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script src="{{ '/assets/js/yorum.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+  {%- endif %}
+</section>
+{%- endif %}

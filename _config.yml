@@ -9,8 +9,16 @@ author: "Baydrogo"
 url: "https://baydrogo.com"
 baseurl: ""
 
+# İsteğe bağlı IndieWeb bağlantıları. Doldurulanlar sayfanın <head> kısmına eklenir.
+# mastodon: "https://mastodon.social/@baydrogo"   # rel="me" doğrulaması için
+# webmention: "baydrogo.com"                      # webmention.io kullanıcı adı
+
+# Yorumlar (bkz. yorum-worker/). İki değer de dolu olduğunda form görünür.
+yorum:
+  worker_url:          # örn. https://baydrogo-yorum.<alt-alan>.workers.dev
+  turnstile_site_key:  # Cloudflare Turnstile site anahtarı (herkese açık)
+
 plugins:
-  - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
 
@@ -22,12 +30,21 @@ timezone: Europe/Istanbul
 markdown: kramdown
 highlighter: rouge
 
+# Yazılar: _posts/ (başlıklı). Notlar: _posts/notlar/ (başlıksız, adres ilk kelimelerden).
 defaults:
   - scope:
       path: "_posts"
       type: "posts"
     values:
       layout: "post"
+      tur: "yazi"
+  - scope:
+      path: "_posts/notlar"
+      type: "posts"
+    values:
+      layout: "not"
+      tur: "not"
+      permalink: "/:year/:month/:day/:title/"
 
 exclude:
   - Gemfile
@@ -37,3 +54,4 @@ exclude:
   - .obsidian
   - README.md
   - scripts/
+  - yorum-worker/

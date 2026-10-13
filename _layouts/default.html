@@ -3,10 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-  <meta name="description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html | truncate: 160 }}">
+  <title>{% if page.tur == "not" %}{{ page.content | strip_html | truncatewords: 8 }} — {{ site.title }}{% elsif page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+  <link rel="alternate" type="application/feed+json" title="{{ site.title }}" href="{{ '/feed.json' | relative_url }}">
+  {%- if site.mastodon %}
+  <link rel="me" href="{{ site.mastodon }}">
+  {%- endif %}
+  {%- if site.webmention %}
+  <link rel="webmention" href="https://webmention.io/{{ site.webmention }}/webmention">
+  {%- endif %}
   <link rel="icon" type="image/x-icon" href="{{ '/assets/favicon.ico' | relative_url }}">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="dc9b6341-60ea-4075-ba44-f404ddd86606"></script>
 </head>
@@ -16,6 +23,7 @@
     <div class="container">
       <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
       <nav class="site-nav">
+        <a href="{{ '/notlar' | relative_url }}">Notlar</a>
         <a href="{{ '/hakkinda' | relative_url }}">Hakkında</a>
         <a href="{{ '/etiketler' | relative_url }}">Etiketler</a>
       </nav>

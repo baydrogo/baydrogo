@@ -7,12 +7,9 @@ layout: default
     <p class="site-description">{{ site.description }}</p>
   {% endif %}
 
-  <div class="post-list">
+  <div class="post-list h-feed">
     {% for post in site.posts %}
-      <div class="post-row">
-        <span class="post-date">{{ post.date | date: "%d.%m.%Y" }}</span>
-        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </div>
+      {% include liste-satiri.html girdi=post %}
     {% endfor %}
   </div>
 </div>

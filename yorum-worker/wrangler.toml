@@ -1,0 +1,13 @@
+name = "baydrogo-yorum"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+
+[vars]
+SITE_URL = "https://baydrogo.com"
+ALLOWED_ORIGINS = "https://baydrogo.com,https://www.baydrogo.com"
+GITHUB_REPO = "baydrogo/baydrogo"
+GITHUB_BRANCH = "main"
+
+# Gizli değerler (depoya yazılmaz):
+#   npx wrangler secret put GITHUB_TOKEN
+#   npx wrangler secret put TURNSTILE_SECRET

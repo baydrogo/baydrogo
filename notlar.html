@@ -1,0 +1,17 @@
+---
+layout: default
+title: Notlar
+permalink: /notlar/
+---
+
+<div class="home">
+  <h1>Notlar</h1>
+  <div class="post-list h-feed">
+    {% assign notlar = site.posts | where: "tur", "not" %}
+    {% for post in notlar %}
+      {% include liste-satiri.html girdi=post %}
+    {% else %}
+      <p class="site-description">Henüz not yok.</p>
+    {% endfor %}
+  </div>
+</div>

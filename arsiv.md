@@ -13,7 +13,7 @@ permalink: /arsiv/
       {{ post.date | date: "%-d %B %Y" }}
     </span>
     <a href="{{ post.url | relative_url }}" style="color: #2d2d2d; text-decoration: none; font-weight: 500;">
-      {{ post.title }}
+      {% include girdi-adi.html girdi=post %}
     </a>
   </li>
 {% endfor %}

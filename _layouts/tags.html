@@ -13,7 +13,7 @@ layout: default
         {% for post in sorted_posts %}
           <li>
             <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            <a href="{{ post.url | relative_url }}">{% include girdi-adi.html girdi=post %}</a>
           </li>
         {% endfor %}
       </ul>

@@ -478,3 +478,103 @@ body {
   .newsletter-form form { flex-direction: column; }
   .newsletter-form input[type="email"] { min-width: unset; }
 }
+
+/* =============================================
+   Notlar (başlıksız kısa girdiler)
+   ============================================= */
+
+.note-row {
+  display: block;
+  padding: 1rem 0;
+
+  .post-date {
+    display: block;
+    text-decoration: none;
+    margin-bottom: 0.25rem;
+    &:hover { color: $color-accent; }
+  }
+}
+
+.note-body {
+  font-size: 0.97rem;
+  > :first-child { margin-top: 0; }
+  > :last-child { margin-bottom: 0; }
+  a { color: $color-accent; }
+  img { max-width: 100%; height: auto; border-radius: 6px; }
+  blockquote {
+    border-left: 3px solid $color-accent;
+    margin: 0.75rem 0;
+    padding: 0.25rem 0 0.25rem 1rem;
+    color: $color-muted;
+    font-style: italic;
+  }
+}
+
+.note-header { margin-bottom: 1rem; }
+.note-permalink { color: $color-muted; text-decoration: none; &:hover { color: $color-accent; } }
+.note .post-content { margin-top: 0; }
+
+/* =============================================
+   Yorumlar
+   ============================================= */
+
+.yorumlar {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid $color-border;
+}
+
+.yorum-yok { color: $color-muted; font-size: 0.95rem; }
+
+.yorum {
+  border-left: 3px solid $color-border;
+  padding: 0.1rem 0 0.1rem 1rem;
+  margin-bottom: 1.5rem;
+  scroll-margin-top: 1rem;
+}
+
+.yorum-yanitlar { margin-top: 1rem; }
+.yorum-meta { font-family: $font-ui; font-size: 0.85rem; color: $color-muted; margin: 0 0 0.3rem; strong { color: $color-text; } }
+.yorum-yanitla { margin-left: 0.5rem; color: $color-accent; }
+.yorum-metin { overflow-wrap: anywhere; }
+
+.yorum-formu {
+  margin-top: 2rem;
+  font-family: $font-ui;
+
+  h3 { font-size: 1rem; margin: 0 0 0.75rem; }
+  label { display: block; margin-bottom: 0.9rem; font-size: 0.85rem; color: $color-muted; }
+
+  input, textarea {
+    display: block;
+    width: 100%;
+    margin-top: 0.3rem;
+    padding: 0.5rem 0.75rem;
+    font: inherit;
+    font-size: 0.95rem;
+    color: $color-text;
+    background: $color-bg;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    &:focus { outline: none; border-color: $color-accent; }
+  }
+
+  textarea { resize: vertical; min-height: 8em; font-family: $font-body; }
+  .cf-turnstile { margin-bottom: 1rem; }
+
+  button {
+    font: inherit;
+    padding: 0.5rem 1.25rem;
+    background: $color-accent;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover { opacity: 0.9; }
+    &:disabled { opacity: 0.6; cursor: wait; }
+  }
+}
+
+.yorum-bal { position: absolute; left: -9999px; }
+.yorum-durum { min-height: 1.4em; margin: 0.75rem 0 0; }
+.yorum-not, .yorum-yanit-bilgi { color: $color-muted; font-size: 0.85rem; }
