@@ -194,21 +194,6 @@ a { color: var(--mavi); text-underline-offset: 0.15em; text-decoration-thickness
 .etiketler { display: flex; flex-wrap: wrap; gap: 0.2rem 0.8rem; margin: 2rem 0 0; font-family: var(--arayuz); font-size: 0.85rem; }
 .etiketler a { text-decoration: none; }
 
-.onizleme {
-  display: none;
-  position: absolute;
-  z-index: 10;
-  width: 22rem;
-  max-width: calc(100vw - 16px);
-  padding: 0.85rem 1rem;
-  background: var(--zemin);
-  border: 1px solid var(--cizgi);
-  border-radius: 4px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  strong { display: block; margin-bottom: 0.3rem; font-family: var(--arayuz); font-size: 0.9rem; }
-  p { margin: 0; font-size: 0.88rem; line-height: 1.55; color: var(--soluk); }
-}
-
 .geri-baglantilar {
   margin: 2.5rem 0 0;
   padding-top: 1.25rem;
