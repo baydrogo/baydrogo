@@ -6,6 +6,8 @@ kaynak: "Baydrogo/Hakkında.md"
 ---
 # Hakkında
 
+![](/assets/img/obsidian/drogo.png)
+
 Merhaba. Bu bloğu aslında kendim için açtım. Eski bir blog okuyucusu olarak, daha önceki denemelerimin bu sefer daha istikrarlı bir örneğini yapmaya gayret edeceğim. Daha önce WordPress ile sürdürdüğüm yolculuğa bu sefer statik HTML sayfalar üzerinden devam ediyorum.
 
 Bloğun ismi, Dino Buzzati'nin şahane romanı *Tatar Çölü*'nün başkarakteri Teğmen Giovanni Drogo'dan esinleniyor. Bastiani Kalesi'ndeki odadan notlar bir nevi...
