@@ -1,11 +1,11 @@
 ---
+date: 2023-05-23 00:00:00 +0300
 title: "Referans Yönetim Aracı: Zotero"
-date: 2023-05-23
 description: "Açık kaynaklı ve ücretsiz referans yönetim yazılımı Zotero'yu akademik yazım sürecindeki işlevleriyle ele alıyorum."
-tags: [zotero]
-author: "Baydrogo"
+slug: referans-yonetim-araci-zotero
+tags: ["zotero"]
+kaynak: "Baydrogo/Referans Yönetim Aracı Zotero.md"
 ---
-
 Akademisyenlerin okudukları metinleri arşivleyebilmeleri, aldıkları notları etiketlerine göre ayırabilmeleri ve onlara bir kitap veya makale yazarken referans vermeleri onlar için birer külfete dönüşebilmekte. Her bir araştırmacının bu hususlara yönelik kendine has bir yöntemi olabilir. Zaten en iyi yöntem de alışıldık ve kişiye özgü olandır. Fakat günümüzde akademisyenlere araştırmaları için hazırlık ve yazım sürecinde yardımcı olan çeşitli dijital araçlar da üretilmekte. Hatta bu araçlar "akademik pazar"da önemli bir yer tutuyor. Bu yazı da bu ürünlerden birine, referans yönetimi yazılımı olan Zotero'ya odaklanmakta.
 
 Öncelikle Zotero'nun benzerleri olan Mendeley, EndNote, Citavi gibi diğer referans yönetimi yazılımlarından farkı açık kaynaklı olması. Açık kaynak yazılım öncelikle ilkesel bir tutum. Kişilerin üzerinde inisiyatif hakkına sahip olmadığı kapalı kilitler yerine, kaynak kodlarını kullanıcılarına açan yazılımlara verilen bir isim. Bu sayede kullandığı yazılımın kaynak kodlarına ulaşabilen kullanıcılar, denetim, düzenleme ve geliştirme hakkına sahip olabiliyorlar. Bu bağlamda açık kaynak yazılımlar dijital alanda giderek yaygınlaşan bir siyasal tutumun da bir ifadesi haline gelmekte. Zotero da açık kaynaklı bir yazılım. Bu sayede teknik bilgiye sahip kullanıcılar eklentiler yazarak Zotero'nun geliştirilmesine ön ayak oluyorlar.

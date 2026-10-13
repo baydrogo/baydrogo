@@ -1,13 +1,11 @@
 ---
+date: 2023-06-21 00:00:00 +0300
 title: "Roam Research: Yeni Nesil Not Alma Sistemi"
-date: 2023-06-21
-description: Kategorik not almanın ötesine geçen, çift yönlü bağlantılarıyla düşünme sürecini destekleyen Roam Research'ü inceliyorum.
-tags:
-  - not-alma
-  - roam-research
-  - dijital-akademi
+description: "Kategorik not almanın ötesine geçen, çift yönlü bağlantılarıyla düşünme sürecini destekleyen Roam Research'ü inceliyorum."
+slug: roam-research-yeni-nesil-not-alma-sistemi
+tags: ["not-alma", "roam-research", "dijital-akademi"]
+kaynak: "Baydrogo/Roam Research Yeni Nesil Not Alma Sistemi.md"
 ---
-
 Akademik üretim artık dijital ortamda gerçekleşiyor. Metin editörleri zaten uzunca bir süredir yaygın bir şekilde kullanılmakta. Dijital araçlar da gün geçtikçe çeşitleniyor. Not alma uygulamalarının bu araçlar içerisinde önemli bir yeri var. Araştırmacılar, notlarına her yerde ulaşabilecekleri uygulamalara ihtiyaç duyuyorlar. Sesli notlar veya dijital kalemlerin kullanımı da giderek artıyor. [Evernote](https://evernote.com/) gibi uzun süredir piyasayı domine eden not alma uygulamarına artık yenileri ekleniyor. Bu yazı da yeni uygulamalardan birine, akademik yazım sürecine eşlik edebilecek yeni nesil dijital not alma uygulamaları arasında öncü bir yeri olan [Roam Research](https://roamresearch.com/)‘e odaklanıyor. Roam Research hakkında blogda yer alacak serinin girişi niteliğinde olacak bu yazı, programın temel özelliklerini ele alacak.
 
 Roam’un not alma sisteminin mantığını oluşturan kişi [Conor White-Sullivan](https://twitter.com/Conaw). Kendisi, not almanın düşünme eylemiyle birlikteliğini vurguluyor ve kategorik not alma yolu yerine, notların birbirleriyle bağlantı kurularak oluşturulması gerektiğine inanıyor. Evernote’un başını çektiği dijital not alma uygulamalarına yönelik eleştirilerini ve Roam Research’ün fikirsel temellerini anlamak için hazırladığı [Twitter serisi](https://twitter.com/Conaw/status/1099181050045952006?s=20) bu mantığı anlamak için önemli. Roam Research ile ilgili [Roambrain](https://roambrain.com/), [Nesslabs](https://nesslabs.com/) gibi birçok kaynak mevcut. Roam kullanıcıların iletişim kurmasına yönelik bir [Slack](https://join.slack.com/t/roamresearch/shared_invite/zt-xy0pd90x-c0KDkgh1BeLKyi0iUlJ1CA) hesabı da bulunmakta.

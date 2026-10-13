@@ -1,11 +1,11 @@
 ---
+date: 2025-03-06 00:00:00 +0300
 title: "Roam Research'ten Logseq'e Geçiş"
-date: 2025-03-06
 description: "Roam Research'ten Logseq'e geçiş sürecimi ve Logseq'i tercih etme nedenlerimi aktarıyorum."
-tags: [not-alma, logseq, dijital-akademi]
-author: "Baydrogo"
+slug: roam-researchten-logseqe-gecis
+tags: ["not-alma", "logseq", "dijital-akademi"]
+kaynak: "Baydrogo/Roam Research'ten Logseq'e Geçiş.md"
 ---
-
 Bay Drogo’nun [ilk yazılarından biri](https://baydrogo.com/roam-research-yeni-nesil-not-alma-sistemi/) Roam Research hakkındaydı. Uygulamayı beta sürümü çıktığı zamanlardan itibaren yaklaşık 3 sene boyunca kullandım. Roam uzun bir süre bir başvuru formu üzerinden öğrencilere uygulamayı ücretsiz kullanabilme imkânı veriyordu. Ben de bu şekilde kullandım. İlk etapta basit bir sorgulamanın ardından verilen 1 yıllık ücretsiz kullanım imkânı, zamanla zorlaştırıldı. Kişilerden uygulamayı nasıl kullandıklarına dair video çekmeleri ve açık uçlu sorulara cevap vermeleri istendi. Nihayetinde bu usulden de vazgeçildi. Aylık 15 dolarlık ücreti, beni istemeden de olsa başka bir platforma geçmeye zorladı.
 
 Bu tür geçişlerde en büyük sorun uygulamalar arasında bir standardın oluşmamış olması. [Markdown](https://www.markdownguide.org/) temelli çok sayıda uygulama olmasına rağmen, özellikle Roam’un “outliner” niteliği geçişi sıkıntılı kılabiliyor. Bu sebeple en makul çözüm, en yakın özelliklere sahip olan bir uygulamaya geçiş. Benim için bu [Logseq](https://logseq.com/) oldu. Logseq’in Roam’un bir çeşit klonu olarak piyasaya çıkması zaten iki uygulama arasındaki geçişleri hızlandırmıştır. Çünkü Logseq ücretsiz ve açık kaynak ([FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software)) bir uygulama. Bu bile Logseq’e geçmek için önemli bir sebep. Geniş ve sıkı bir taraftar kitlesi var. Son zamanlara kadar geliştirilme süreci de hızlıydı.

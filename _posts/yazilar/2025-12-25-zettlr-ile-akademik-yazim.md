@@ -1,11 +1,11 @@
 ---
+date: 2025-12-25 00:00:00 +0300
 title: "Zettlr ile Akademik Yazım"
-date: 2025-12-25
 description: "Markdown tabanlı, Zotero entegrasyonlu ve açık kaynaklı akademik metin editörü Zettlr'ı inceliyorum."
-tags: [dijital-akademi, markdown, zettlr]
-author: "Baydrogo"
+slug: zettlr-ile-akademik-yazim
+tags: ["dijital-akademi", "markdown", "zettlr"]
+kaynak: "Baydrogo/Zettlr ile Akademik Yazım.md"
 ---
-
 Bu yazının konusu temelde bir metin editörü ve not alma uygulaması olarak tasarlanmış, akademik ihtiyaçlara cevap veren bir program olan [Zettlr](https://www.zettlr.com/). Program, kendisi de bir araştırmacı olan [Hendrik Erz](https://www.hendrik-erz.de/) tarafından geliştirilmekte. 
 
 Zettlr, [markdown](https://tr.wikipedia.org/wiki/Markdown) tabanlı çalışıyor. Markdown oldukça basit bir [söz dizimine](https://www.markdownguide.org/basic-syntax/) sahip olduğu için öğrenmesi kolay. Markdown sayesinde elinizi klavyeden kaldırmadan birçok işlemi hızlıca yapmanız mümkün hâle geliyor.
@@ -31,4 +31,3 @@ Microsoft Word araştırmacılar üzerindeki hâkimiyetini sürdürüyor. Kişil
 Artık giderek artan sayıda kişinin alternatif yolları aradığını da söylemek gerek. Hantal ve çok sayıda dikkat dağıtıcı özellikleri barındıran Word yerine markdown tabanlı akademik yazım sürecine dair çözüm arayışları var. Özellikle belirli eklentilerle [Obsidian üzerinden](https://publish.obsidian.md/hub/04+-+Guides%2C+Workflows%2C+%26+Courses/for+Academic+Writing) akademik çalışmalarını yürütenlerin sayısının artması da bunun göstergesi.
 
 Nihayetinde alışkanlıklardan vazgeçmek kolay değil. Bu tür alternatif arayışlarının gereksiz olduğunu düşünenler de olabilir. Yine de mümkün olduğunca şirketlere olan bağımlılıktan kurtulmak adına açık kaynak çözümleri keşfetmek oldukça önemli. Zettlr da bu seçeneklerden yalnızca biri.
-

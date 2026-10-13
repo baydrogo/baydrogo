@@ -1,12 +1,12 @@
 ---
+date: 2026-05-25 00:00:00 +0300
 title: "Amasya: Hayal Gerçek Olunca"
-date: 2026-05-25
 description: "Kurban Bayramı yolculuğunda güzergâha eklediğim Amasya'dan izlenimler: tarih, mimari ve bir şehrin anlatılamayan hikâyesi."
-tags: [serbest]
 author: "Burak Yetimoğlu"
-
+slug: amasya-gezisi
+tags: ["serbest"]
+kaynak: "Baydrogo/Amasya Hayal Gerçek Olunca.md"
 ---
-
 Bu sene Kurban Bayramı'nı Rize'de geçirmeye karar verdik. Eşimle birlikte biraz farklı bir yolculuk olmasını istediğimiz için yol üstündeki yerleri de görebileceğimiz, farkına vararak tadını çıkararak yol alacağımız bir seyahat planladık. Bu amaçla çocukluğumdan beri görmek istediğim bir yer olan Amasya'yı da güzergâhımıza aldım.[^1]
 
 Cuma sabahı saat 10.00 gibi Ankara'dan yola çıktık. Navigasyona kalacağımız oteli girince yol üzerinde İskilip'in geçtiğini fark ettim. Şu an İskilip'te kaymakam olarak görev yapan değerli okul arkadaşım Ramazan Polat'ı görmek ve cuma namazını İskilip'te kılmak istedim.
@@ -17,7 +17,7 @@ Cuma namazına İskilip'e yetiştim. Ardından değerli arkadaşım bizi muhteş
 
 Bu coğrafi güzelliklerin içinden geçerek Amasya'ya vardık ve direkt olarak otele geçtik. Otelimize yerleştikten sonra yürüyüşe çıkınca şehrin kendine özgü coğrafyasından inanılmaz etkilendim. Tarih boyunca pek çok medeniyete ev sahipliği yapmış, Osmanlı döneminde önemli bir serhat ve şehzade şehri olmuş, baştan aşağı tarihin kokladığı bu şehrin doğal azameti insanı gerçekten etkiliyor. Etrafı dağlarla çevrili, ortasından Yeşilırmak'ın geçtiği, bir tarafında kendine özgü konakları olan, diğer tarafına tarihi yapıların serpildiği tatlı bir coğrafya. Ancak başta da değindiğim gibi bilgilendirme, destekleme ve öne çıkarma konusunda çok zayıf kaldığımızı düşünüyorum.
 
-![Amasya](/assets/images/amasya_1.jpg "Amasya")
+![Amasya](/assets/img/obsidian/amasya-1.jpg "Amasya")
 
 Bir örnek verecek olursam, Fransa'da 2017-2018 yıllarında Sciences Po Aix'te master yaparken Fransa'nın güneyini çok iyi gezme fırsatı bulmuştuk. Hafta sonları haritadan küçük bir kasaba seçiyor, varır varmaz turizm ofisine uğrayıp rehberlerden gezi haritamızı ve tavsiyelerini alıyor, sonra elimizdeki haritayla gücümüzün yettiği kadar o yeri adım adım geziyorduk. En küçük beldede bile yönlendirme tabelaları, bilgi panoları ve broşürler hazır oluyordu. Araştırmalarım sonucunda Amasya'da da Kültür ve Turizm Bakanlığı'na bağlı bir danışma merkezi olduğunu gördüm ama bu merkezi ne kadar turist biliyor ve ne kadarı oradan faydalanıyor acaba. Amasya gibi derin bir tarihe sahip bir şehirde böyle kurumların işlevsiz kalması ya da yeterince görünür olmaması büyük bir eksiklik olduğunu düşünüyorum. Turizm noktasında Türkiye'nin tüm şehirlerine yayılabilen, ulaşılabilen, herkesin faydalanabileceği ve öğrenebileceği bir ekosistem düşünmemiz gerekiyor.
 
@@ -27,11 +27,11 @@ Amasya'nın bu kadar kritik tarihsel kırılma anlarında sahne olması bir tesa
 
 Heyecanlı ve meraklı bir şekilde ilk olarak görmek istediğim yer II. Bayezid Camii ve şadırvanı oldu. Külliye, 1485-1486 yılları arasında Sultan II. Bayezid'in talimatıyla Amasya Sancak Beyi Şehzade Ahmed tarafından yaptırılmış; cami, medrese, imaret, yemekhane, mutfak, kiler ve ahırdan oluşan geniş bir yapı topluluğu olarak tasarlanmıştır. Yani sadece bir ibadet mekânı değil — bir ilim yurdu, bir aşevi, bir misafirhane; kısacası şehrin tam ortasında işleyen bir medeniyet kurumu vazifesi görmüş. Ortada cami, sağında medrese, solunda aşhane-imaret ve misafirhane bulunması, dönemin şehir planlaması ve toplumsal ihtiyaçların ne kadar ince düşünüldüğünü gösteriyor. Kubbe içi ve pencere kemerleri zengin kalem işleriyle, ana kapının sağ ve sol kanatları ise ahşap oyma sanatıyla bezenmiş.
 
-![II. Bayezid Camii](/assets/images/amasya_2.jpg "II. Bayezid Camii")
+![II. Bayezid Camii](/assets/img/obsidian/amasya-2.jpg "II. Bayezid Camii")
 
 Şadırvan ise namazdan çıkışta ortada bir altın gibi parlıyor. Hayatımdan gördüğüm en güzel şadırvanlardan birisi. 12 kenarlı, 12 sütunlu, 12 yüzlü bir yapı — bu simetri tesadüf değil gibi hissettiriyor. Daha da ilginci, 19. yüzyılda onarılan şadırvanın kubbesine İstanbul manzaraları işlenmiş; o manzaralar arasında Bayezid Külliyesi'nin İstanbul'daki kardeşi de var.
 
-![Şadırvan](/assets/images/amasya_3.jpg "Şadırvan")
+![Şadırvan](/assets/img/obsidian/amasya-3.jpg "Şadırvan")
 
 Yeşilırmak kıyısına, vadinin tam kalbine konumlandırılmış bu yapıya bakarken şunu düşündüm: Amasya o tarihte zaten bir şehzade şehri, bir eğitim merkezi. Buraya böyle bir külliye inşa etmek siyasi ve tarihi bir mesaj da taşıyor aslında. Hem o şehrin imparatorluk için önemi, hem de kalıcılığın bir göstergesi olarak okunabilir. 1486'da bu şaheseri dikebilen bir medeniyetin, bugün kendi tarihini hakkıyla anlatamaması gerçekten düşündürücü.
 

@@ -7,9 +7,12 @@ Kasadaki `Baydrogo/` klasörünü siteyle eşitler, commit edip GitHub'a yükler
 Kasada:
   tür: not            → not                (_posts/notlar/); `başlık` verilirse başlıklı not
   tür: yazı           → başlıklı yazı      (_posts/yazilar/), başlık = dosya adı ya da `başlık`
+  tür: sayfa          → sabit sayfa        (sayfalar/), örn. Hakkında
   tür yoksa           → yayımlanmaz (taslak)
   tags: [kalem, ...]  → etiketler
   özet: "..."         → yazının özeti, sitede `description` olur (isteğe bağlı)
+  yazar: "..."        → yazar adı (boşsa site yazarı)
+  adres: /tam/yol/    → adresi olduğu gibi sabitler (eski adresleri korumak için)
 
 İlk yayında betik nota iki özellik ekler, böylece adres ve tarih bir daha değişmez:
   yayın: 2026-10-13T14:30
@@ -136,7 +139,7 @@ class Girdi:
         self.govde = govde
         tur = liste(al(ozellik, "tür", "tur"))
         tur = (tur[0] if tur else "").lower().translate(HARF)
-        self.tur = tur if tur in ("not", "yazi") else None
+        self.tur = tur if tur in ("not", "yazi", "sayfa") else None
         self.not_basligi = al(ozellik, "başlık", "baslik") if self.tur == "not" else None
         self.baslik = al(ozellik, "başlık", "baslik") or yol.stem
         self.eklenecek = {}
@@ -144,7 +147,8 @@ class Girdi:
         tarih = tarih_coz(al(ozellik, "yayın", "yayin"))
         if not tarih:
             tarih = datetime.now().replace(second=0, microsecond=0)
-            self.eklenecek["yayın"] = tarih.strftime("%Y-%m-%dT%H:%M")
+            if self.tur != "sayfa":  # sayfaların tarihi yok
+                self.eklenecek["yayın"] = tarih.strftime("%Y-%m-%dT%H:%M")
         self.tarih = tarih
 
         adres = al(ozellik, "adres")
@@ -156,9 +160,16 @@ class Girdi:
             adres = adres or tarih.strftime("%H%M")
             self.eklenecek["adres"] = adres
         self.adres = str(adres)
+        # `adres: /tam/yol/` biçimi, girdinin adresini olduğu gibi sabitler (eski adresleri korumak için)
+        self.ozel_adres = self.adres if self.adres.startswith("/") else None
+        if self.ozel_adres and not self.ozel_adres.endswith("/"):
+            self.ozel_adres += "/"
+        self.dosya_adi = sluglastir(self.adres) or tarih.strftime("%H%M")
 
     @property
     def url(self):
+        if self.ozel_adres:
+            return self.ozel_adres
         if self.tur == "not":
             return self.tarih.strftime("/%Y/%m/%d/") + self.adres + "/"
         return "/" + self.adres + "/"
@@ -166,9 +177,11 @@ class Girdi:
     @property
     def hedef(self):
         gun = self.tarih.strftime("%Y-%m-%d")
+        if self.tur == "sayfa":
+            return REPO / "sayfalar" / f"{self.dosya_adi}.md"
         if self.tur == "not":
-            return REPO / "_posts" / "notlar" / f"{gun}-{self.tarih.strftime('%H%M')}-{self.adres[:20].strip('-')}.md"
-        return REPO / "_posts" / "yazilar" / f"{gun}-{self.adres}.md"
+            return REPO / "_posts" / "notlar" / f"{gun}-{self.tarih.strftime('%H%M')}-{self.dosya_adi[:20].strip('-')}.md"
+        return REPO / "_posts" / "yazilar" / f"{gun}-{self.dosya_adi}.md"
 
 
 def kasayi_oku():
@@ -237,18 +250,30 @@ def donustur(g, yayimlananlar, dosyalar, gorseller):
     metin = re.sub(r"==(.+?)==", r"<mark>\1</mark>", metin)
     metin = re.sub(r"^(\s*>\s*)\[![\w-]+\][+-]?\s*", r"\1", metin, flags=re.M)  # callout işareti
 
+    kaynak = f"kaynak: {yaml_metin(g.yol.relative_to(KASA))}"
+    ozet = al(g.ozellik, "özet", "ozet")
+
+    if g.tur == "sayfa":
+        on = ["---", "layout: sayfa", f"title: {yaml_metin(g.baslik)}", f"permalink: {g.url}"]
+        if ozet:
+            on.append(f"description: {yaml_metin(ozet)}")
+        on += [kaynak, "---"]
+        return "\n".join(on) + "\n" + metin.strip() + "\n"
+
     on = ["---", f"date: {g.tarih.strftime('%Y-%m-%d %H:%M:00')} {SAAT_DILIMI}"]
     if g.tur == "not" and g.not_basligi:
         on.append(f"title: {yaml_metin(g.not_basligi)}")
     if g.tur == "yazi":
         on.append(f"title: {yaml_metin(g.baslik)}")
-        ozet = al(g.ozellik, "özet", "ozet")
-        if ozet:
-            on.append(f"description: {yaml_metin(ozet)}")
-    on.append(f"slug: {g.adres}")
+    if ozet:
+        on.append(f"description: {yaml_metin(ozet)}")
+    yazar = al(g.ozellik, "yazar")
+    if yazar:
+        on.append(f"author: {yaml_metin(liste(yazar)[0])}")
+    on.append(f"permalink: {g.ozel_adres}" if g.ozel_adres else f"slug: {g.adres}")
     etiketler = [e.lstrip("#") for e in liste(al(g.ozellik, "tags", "etiketler"))]
     on.append("tags: [" + ", ".join(yaml_metin(e) for e in etiketler) + "]")
-    on.append(f"kaynak: {yaml_metin(g.yol.relative_to(KASA))}")
+    on.append(kaynak)
     on.append("---")
     return "\n".join(on) + "\n" + metin.strip() + "\n"
 
@@ -277,7 +302,7 @@ def kasaya_yaz(g):
 
 def mevcut_uretilenler():
     sonuc = {}
-    for yol in (REPO / "_posts").rglob("*.md"):
+    for yol in [*(REPO / "_posts").rglob("*.md"), *(REPO / "sayfalar").glob("*.md")]:
         m = re.search(r'^kaynak:\s*"?(.+?)"?\s*$', yol.read_text(encoding="utf-8"), re.M)
         if m:
             sonuc[yol] = m.group(1)
@@ -344,7 +369,7 @@ def main():
         print("Dosyalar yazıldı (yerel mod, yüklenmedi).")
         return
 
-    git("add", "-A", "_posts", "assets/img")
+    git("add", "-A", "_posts", "sayfalar", "assets/img")
     if subprocess.run(["git", "-C", str(REPO), "diff", "--cached", "--quiet"]).returncode == 0:
         print("Değişiklik yok, site zaten güncel.")
         return

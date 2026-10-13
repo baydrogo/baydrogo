@@ -21,7 +21,9 @@ python3 scripts/yayinla.py
 
 Betik klasörü siteyle eşitler: yeni ve değişen girdileri `_posts/` altına yazar, kasadan silineni ya da `tür`ü kaldırılanı siteden kaldırır, `[[bağlantıları]]` ve `![[görselleri]]` dönüştürür, commit edip yükler. İlk yayında nota `yayın` ve `adres` özelliklerini ekler; adres ve tarih bundan sonra sabit kalır. `özet` özelliği yazının `description` alanı olur. `--kuru` yalnızca ne olacağını gösterir.
 
-Elle yazılan yazılara (`kaynak:` alanı olmayanlara) betik dokunmaz.
+Sitedeki bütün yazılar, notlar ve Hakkında sayfası Obsidian'dan üretilir (`kaynak:` alanı bunu gösterir); düzeltmek için kasadaki notu düzenleyip yeniden yayımla. `tür: sayfa` sabit sayfalar içindir (`sayfalar/`). `adres: /tam/yol/` bir girdinin adresini olduğu gibi sabitler; eski adresler bu yolla korunur. `yazar` özelliği yazının yazarını belirler.
+
+Elle eklenen ve `kaynak:` alanı olmayan dosyalara betik dokunmaz.
 
 ## Yorumlar
 

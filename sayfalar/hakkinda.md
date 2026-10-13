@@ -1,9 +1,9 @@
 ---
 layout: sayfa
-title: Hakkında
+title: "Hakkında"
 permalink: /hakkinda/
+kaynak: "Baydrogo/Hakkında.md"
 ---
-
 # Hakkında
 
 Merhaba, ben Drogo.
