@@ -61,5 +61,6 @@ exclude:
   - .obsidian
   - README.md
   - CLAUDE.local.md
+  - .claude
   - scripts/
   - yorum-worker/

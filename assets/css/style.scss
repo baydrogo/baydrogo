@@ -76,6 +76,15 @@ a { color: var(--mavi); text-underline-offset: 0.15em; text-decoration-thickness
   line-height: 1.55;
 }
 
+.site-ust {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.6rem;
+}
+
+.karpuz { transform: rotate(-22deg); }
+
 .site-adi {
   display: block;
   font-size: 1.45rem;
@@ -83,7 +92,6 @@ a { color: var(--mavi); text-underline-offset: 0.15em; text-decoration-thickness
   letter-spacing: -0.01em;
   color: var(--metin);
   text-decoration: none;
-  margin-bottom: 0.6rem;
   &:hover { color: var(--mavi); }
 }
 

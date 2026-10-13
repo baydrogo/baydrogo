@@ -7,3 +7,4 @@ vendor/
 .DS_Store
 .obsidian/
 CLAUDE.local.md
+.claude/
