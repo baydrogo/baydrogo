@@ -3,15 +3,13 @@ layout: default
 title: Notlar
 permalink: /notlar/
 ---
-
-<div class="home">
-  <h1>Notlar</h1>
-  <div class="post-list h-feed">
-    {% assign notlar = site.posts | where: "tur", "not" %}
-    {% for post in notlar %}
-      {% include liste-satiri.html girdi=post %}
-    {% else %}
-      <p class="site-description">Henüz not yok.</p>
-    {% endfor %}
-  </div>
+<h1 class="sayfa-basligi">Notlar</h1>
+<p class="sayfa-aciklama">Kısa, başlıksız, anlık notlar.</p>
+<div class="akis h-feed">
+  {%- assign notlar = site.posts | where: "tur", "not" %}
+  {%- for g in notlar %}
+  {% include kenar-girdi.html girdi=g %}
+  {%- else %}
+  <p class="sayfa-aciklama">Henüz not yok.</p>
+  {%- endfor %}
 </div>

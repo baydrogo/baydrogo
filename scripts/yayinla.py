@@ -205,7 +205,8 @@ def donustur(g, yayimlananlar, dosyalar, gorseller):
             ad = gorsel_adi(yol)
             gorseller[ad] = yol
             alt = "" if re.fullmatch(r"\d+(x\d+)?", ayar) else ayar
-            return f"![{alt}]({GORSEL_URL}{ad})"
+            # ![[foto.jpg|Altyazı]] → sitede altyazılı figür
+            return f'![{alt}]({GORSEL_URL}{ad} "{alt}")' if alt else f"![]({GORSEL_URL}{ad})"
         return bag(hedef.split("#")[0], None)
 
     def bag(hedef, gorunen):

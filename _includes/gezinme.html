@@ -1,0 +1,8 @@
+<nav class="komsular">
+  {%- if page.previous.url %}
+  <a class="onceki" href="{{ page.previous.url | relative_url }}">← {% include girdi-adi.html girdi=page.previous %}</a>
+  {%- endif %}
+  {%- if page.next.url %}
+  <a class="sonraki" href="{{ page.next.url | relative_url }}">{% include girdi-adi.html girdi=page.next %} →</a>
+  {%- endif %}
+</nav>

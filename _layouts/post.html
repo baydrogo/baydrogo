@@ -1,56 +1,29 @@
 ---
 layout: default
 ---
-
-<article class="post h-entry">
-  <header class="post-header">
-    <h1 class="p-name">{{ page.title }}</h1>
-    {% assign post_author = page.author | default: site.author %}
-    {% if post_author == "Burak Yetimoğlu" %}
-      {% assign author_slug = "burak-yetimoglu" %}
-    {% else %}
-      {% assign author_slug = "baydrogo" %}
-    {% endif %}
-    <p class="post-meta"><a class="u-url" href="{{ page.url | relative_url }}"><time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time></a> &middot; <a href="{{ '/yazar/' | append: author_slug | relative_url }}" class="author-link p-author h-card">{{ post_author }}</a>{% if page.tags.size > 0 %} &middot; {% for tag in page.tags %}<a href="{{ '/etiketler' | relative_url }}#{{ tag | slugify }}" class="tag-link-inline">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}{% endif %}</p>
-  </header>
-  <div class="post-content e-content">
-    {{ content }}
-  </div>
-
-  {% assign related = "" | split: "" %}
-  {% for tag in page.tags %}
-    {% assign tagged = site.posts | where_exp: "p", "p.tags contains tag" %}
-    {% for p in tagged %}
-      {% if p.url != page.url %}
-        {% assign related = related | push: p %}
-      {% endif %}
-    {% endfor %}
-  {% endfor %}
-  {% assign related = related | uniq %}
-  {% if related.size > 0 %}
-  <div class="related-posts">
-    <p class="section-label">Bağlantılı yazılar</p>
-    <ul>
-      {% for p in related limit:5 %}
-        <li><a href="{{ p.url | relative_url }}">{% include girdi-adi.html girdi=p %}</a></li>
-      {% endfor %}
-    </ul>
-  </div>
-  {% endif %}
-
-  {% include yorumlar.html %}
-
-  <div class="newsletter-form">
-    <p class="section-label">Güncelleme al</p>
-    <p class="newsletter-desc">Yeni yazılardan haberdar olmak için e-posta ile takip et.</p>
-    <form action="https://buttondown.email/api/emails/embed-subscribe/baydrogo" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.email/baydrogo', 'popupwindow')">
-      <input type="email" name="email" placeholder="E-posta adresin" required />
-      <button type="submit">Abone ol</button>
-    </form>
-  </div>
-
-  <div class="post-nav">
-    {% if page.previous.url %}<a href="{{ page.previous.url | relative_url }}">&larr; {% include girdi-adi.html girdi=page.previous %}</a>{% endif %}
-    {% if page.next.url %}<a href="{{ page.next.url | relative_url }}" style="float:right">{% include girdi-adi.html girdi=page.next %} &rarr;</a>{% endif %}
+{%- assign yazar = page.author | default: site.author -%}
+{%- assign kelime = content | strip_html | number_of_words -%}
+<article class="tek h-entry">
+  <div class="kenar">
+    <aside class="kenar-bilgi">
+      <a class="u-url" href="{{ page.url | relative_url }}"><time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}">{% include tarih.html tarih=page.date %}</time></a>
+      <span class="tur">{% include tur.html girdi=page %} · {{ kelime | divided_by: 200 | plus: 1 }} dk</span>
+      {%- if yazar != site.author %}
+      <a class="yazar p-author h-card" href="{{ '/yazar/' | append: yazar | slugify: 'latin' | append: '/' | relative_url }}">{{ yazar }}</a>
+      {%- endif %}
+    </aside>
+    <div class="kenar-metin">
+      <h1 class="p-name">{{ page.title }}</h1>
+      <div class="icerik e-content">
+        {{ content }}
+      </div>
+      {%- if page.tags.size > 0 %}
+      <p class="etiketler">{% for tag in page.tags %}<a class="p-category" href="{{ '/etiketler/' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a>{% unless forloop.last %} {% endunless %}{% endfor %}</p>
+      {%- endif %}
+      {% include bulten.html %}
+    </div>
   </div>
 </article>
+{% include ilgili.html %}
+{% include yorumlar.html %}
+{% include gezinme.html %}

@@ -1,0 +1,16 @@
+{%- assign related = "" | split: "" -%}
+{%- for tag in page.tags -%}
+  {%- assign tagged = site.posts | where_exp: "p", "p.tags contains tag" -%}
+  {%- for p in tagged -%}{%- if p.url != page.url -%}{%- assign related = related | push: p -%}{%- endif -%}{%- endfor -%}
+{%- endfor -%}
+{%- assign related = related | uniq -%}
+{%- if related.size > 0 %}
+<section class="ilgili">
+  <p class="bolum-etiketi">Bağlantılı</p>
+  <ul class="liste">
+    {%- for p in related limit: 5 %}
+    {% include kenar-satir.html girdi=p %}
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}

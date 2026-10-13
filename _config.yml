@@ -3,7 +3,9 @@
 # =============================================
 
 title: "Baydrogo"
-description: ""
+description: "Okuma, yazma ve not alma üzerine kısa notlar, uzun yazılar."
+tanitim: "Okuma, yazma, not alma ve dijital araçlar üzerine kısa notlar ve uzun yazılar; arada serbest yazılar."
+bulten: "https://buttondown.email/baydrogo"
 author: "Baydrogo"
 
 url: "https://baydrogo.com"
@@ -21,6 +23,10 @@ yorum:
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-paginate
+
+paginate: 15
+paginate_path: "/sayfa/:num/"
 
 permalink: /:title/
 

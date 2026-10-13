@@ -1,6 +1,6 @@
 {%- comment -%}Listelerde girdinin adı: yazıda başlık, notta ilk kelimeler.{%- endcomment -%}
 {%- if include.girdi.tur == "not" -%}
-{{ include.girdi.content | strip_html | truncatewords: 12 }}
+{{ include.girdi.content | markdownify | strip_html | strip_newlines | truncatewords: 10 }}
 {%- else -%}
 {{ include.girdi.title }}
 {%- endif -%}

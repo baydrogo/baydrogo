@@ -1,0 +1,2 @@
+{%- assign _ay = include.tarih | date: "%-m" | minus: 1 -%}{%- assign _yil = include.tarih | date: "%Y" -%}{%- assign _buyil = site.time | date: "%Y" -%}
+{%- if include.kisa -%}{{ include.tarih | date: "%-d" }} {{ site.data.tr.kisa[_ay] }}{% if _yil != _buyil %} {{ _yil }}{% endif %}{%- else -%}{{ include.tarih | date: "%-d" }} {{ site.data.tr.aylar[_ay] }} {{ _yil }}{%- endif -%}

@@ -1,0 +1,1 @@
+{%- if include.girdi.tur == "not" -%}not{%- else -%}{%- capture _b %}{% include bolum.html girdi=include.girdi %}{% endcapture -%}{%- if _b == "serbest" -%}serbest{%- else -%}yazı{%- endif -%}{%- endif -%}

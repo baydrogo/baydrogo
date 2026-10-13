@@ -1,0 +1,18 @@
+---
+layout: default
+title: Arşiv
+permalink: /arsiv/
+---
+<h1 class="sayfa-basligi">Arşiv</h1>
+<p class="sayfa-aciklama">{{ site.posts | where: "tur", "yazi" | size }} yazı, {{ site.posts | where: "tur", "not" | size }} not. Konulara göre görmek için <a href="{{ '/etiketler/' | relative_url }}">etiketler</a>.</p>
+{%- assign yillar = site.posts | group_by_exp: "g", "g.date | date: '%Y'" %}
+{%- for yil in yillar %}
+<section class="grup">
+  <h2 class="grup-basligi">{{ yil.name }}</h2>
+  <ul class="liste">
+    {%- for g in yil.items %}
+    {% include kenar-satir.html girdi=g %}
+    {%- endfor %}
+  </ul>
+</section>
+{%- endfor %}

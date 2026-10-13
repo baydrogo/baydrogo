@@ -1,15 +1,22 @@
 ---
 layout: default
 ---
+{%- if paginator.page == 1 and site.tanitim %}
+<p class="tanitim">{{ site.tanitim }}</p>
+{%- endif %}
 
-<div class="home">
-  {% if site.description %}
-    <p class="site-description">{{ site.description }}</p>
-  {% endif %}
-
-  <div class="post-list h-feed">
-    {% for post in site.posts %}
-      {% include liste-satiri.html girdi=post %}
-    {% endfor %}
-  </div>
+<div class="akis h-feed">
+  {%- for girdi in paginator.posts %}
+  {% include kenar-girdi.html girdi=girdi %}
+  {%- endfor %}
 </div>
+
+{%- if paginator.total_pages > 1 %}
+<nav class="sayfalama kenar">
+  <span class="kenar-bilgi">{{ paginator.page }} / {{ paginator.total_pages }}</span>
+  <span class="kenar-metin">
+    {%- if paginator.previous_page %}<a href="{{ paginator.previous_page_path | relative_url }}">← Daha yeni</a>{% endif %}
+    {%- if paginator.next_page %}<a class="sonraki" href="{{ paginator.next_page_path | relative_url }}">Daha eski →</a>{% endif %}
+  </span>
+</nav>
+{%- endif %}

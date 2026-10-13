@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: sayfa
 title: Hakkında
 permalink: /hakkinda/
 ---

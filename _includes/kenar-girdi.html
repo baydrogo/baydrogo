@@ -1,0 +1,18 @@
+{%- assign g = include.girdi -%}
+<article class="kenar girdi h-entry{% if g.tur == 'not' %} girdi-not{% endif %}">
+  <div class="kenar-bilgi">
+    <a class="u-url" href="{{ g.url | relative_url }}"><time class="dt-published" datetime="{{ g.date | date_to_xmlschema }}">{% include tarih.html tarih=g.date kisa=true %}</time></a>
+    <span class="tur">{% include tur.html girdi=g %}</span>
+    {%- if g.author and g.author != site.author %}
+    <span class="yazar p-author">{{ g.author }}</span>
+    {%- endif %}
+  </div>
+  <div class="kenar-metin">
+    {%- if g.tur == "not" %}
+    <div class="e-content not-metni">{{ g.content }}</div>
+    {%- else %}
+    <h2 class="girdi-baslik p-name"><a href="{{ g.url | relative_url }}">{{ g.title }}</a></h2>
+    <p class="p-summary">{{ g.description | default: g.excerpt | strip_html | truncatewords: 40 }}</p>
+    {%- endif %}
+  </div>
+</article>

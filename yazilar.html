@@ -1,0 +1,24 @@
+---
+layout: default
+title: Yazılar
+permalink: /yazilar/
+---
+<h1 class="sayfa-basligi">Yazılar</h1>
+{%- assign yazilar = site.posts | where: "tur", "yazi" %}
+{%- assign serbest = yazilar | where_exp: "p", "p.tags contains 'serbest'" %}
+<section class="grup">
+  <h2 class="grup-basligi">Not alma ve araçlar</h2>
+  <ul class="liste">
+    {%- for g in yazilar %}{% unless g.tags contains "serbest" %}
+    {% include kenar-satir.html girdi=g %}
+    {%- endunless %}{% endfor %}
+  </ul>
+</section>
+<section class="grup">
+  <h2 class="grup-basligi">Serbest</h2>
+  <ul class="liste">
+    {%- for g in serbest %}
+    {% include kenar-satir.html girdi=g %}
+    {%- endfor %}
+  </ul>
+</section>
