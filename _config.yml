@@ -3,8 +3,7 @@
 # =============================================
 
 title: "Baydrogo"
-description: "Okuma, yazma ve not alma üzerine kısa notlar, uzun yazılar."
-tanitim: "Okuma, yazma, not alma ve dijital araçlar üzerine kısa notlar ve uzun yazılar; arada serbest yazılar."
+description: "Çöle bakan odadan notlar: okumak, yazmak ve beklemek üzerine."
 bulten: "https://buttondown.email/baydrogo"
 kenar_cubugu: sol   # sol | sag
 author: "Baydrogo"
@@ -22,7 +21,6 @@ yorum:
   turnstile_site_key:  # Cloudflare Turnstile site anahtarı (herkese açık)
 
 plugins:
-  - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-paginate
 

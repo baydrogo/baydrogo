@@ -1,11 +1,11 @@
 <aside class="kenar-cubugu">
-  <div class="site-ust">
-    <a class="site-adi" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-    <img class="karpuz" src="{{ '/assets/karpuz.svg' | relative_url }}" alt="Karpuz dilimi" title="Free Palestine" width="31" height="16">
+  <div class="h-card">
+    <div class="site-ust">
+      <a class="site-adi p-name u-url u-uid" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <img class="karpuz u-logo" src="{{ '/assets/karpuz.svg' | relative_url }}" alt="Karpuz dilimi" title="Free Palestine" width="31" height="16">
+    </div>
+    <p class="tanitim p-note">{{ site.description }}</p>
   </div>
-  {%- if site.tanitim %}
-  <p class="tanitim">{{ site.tanitim }}</p>
-  {%- endif %}
 
   <nav class="menu">
     <a href="{{ '/' | relative_url }}"{% if include.bolum == "akis" %} aria-current="page"{% endif %}>Akış</a>

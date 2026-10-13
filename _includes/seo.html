@@ -1,0 +1,47 @@
+{%- comment -%}
+  Arama motorları ve paylaşım kartları: açıklama, asıl adres, Open Graph, Twitter kartı, JSON-LD.
+  `baslik` default.html'de hesaplanır.
+{%- endcomment -%}
+{%- assign girdi = false -%}
+{%- if page.date and page.collection == "posts" -%}{%- assign girdi = true -%}{%- endif -%}
+
+{%- if page.description -%}
+  {%- assign aciklama = page.description -%}
+{%- elsif girdi -%}
+  {%- assign aciklama = content | kesit: 30 -%}
+{%- else -%}
+  {%- assign aciklama = site.description -%}
+{%- endif -%}
+{%- assign aciklama = aciklama | strip_html | strip_newlines | truncate: 160 -%}
+
+{%- assign gorsel = page.image -%}
+{%- if gorsel == nil and girdi and content contains '<img' -%}
+  {%- assign p1 = content | split: '<img' -%}
+  {%- assign p2 = p1[1] | split: 'src="' -%}
+  {%- assign gorsel = p2[1] | split: '"' | first -%}
+{%- endif -%}
+{%- assign gorsel = gorsel | default: '/assets/paylasim.png' | absolute_url -%}
+
+{%- assign adres = page.url | replace: 'index.html', '' | absolute_url -%}
+{%- assign yazar = page.author | default: site.author -%}
+  <meta name="description" content="{{ aciklama | escape }}">
+  <link rel="canonical" href="{{ adres }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:type" content="{% if girdi %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{{ baslik | split: ' — ' | first | escape }}">
+  <meta property="og:description" content="{{ aciklama | escape }}">
+  <meta property="og:url" content="{{ adres }}">
+  <meta property="og:image" content="{{ gorsel }}">
+  {%- if girdi %}
+  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+  <meta property="article:author" content="{{ yazar | escape }}">
+  {%- endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {%- if girdi %}
+  {"@context":"https://schema.org","@type":"BlogPosting","headline":{{ baslik | split: ' — ' | first | jsonify }},"description":{{ aciklama | jsonify }},"url":{{ adres | jsonify }},"mainEntityOfPage":{{ adres | jsonify }},"image":{{ gorsel | jsonify }},"datePublished":{{ page.date | date_to_xmlschema | jsonify }},"inLanguage":"tr","author":{"@type":"Person","name":{{ yazar | jsonify }}},"publisher":{"@type":"Person","name":{{ site.author | jsonify }},"url":{{ site.url | jsonify }}}}
+  {%- else %}
+  {"@context":"https://schema.org","@type":"WebSite","name":{{ site.title | jsonify }},"description":{{ site.description | jsonify }},"url":{{ site.url | append: '/' | jsonify }},"inLanguage":"tr","author":{"@type":"Person","name":{{ site.author | jsonify }},"url":{{ site.url | jsonify }}}}
+  {%- endif %}
+  </script>
