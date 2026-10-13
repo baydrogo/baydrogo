@@ -16,6 +16,7 @@ layout: default
   {%- if page.tags.size > 0 %}
   <p class="etiketler">{% for tag in page.tags %}<a class="p-category" href="{{ '/etiketler/' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a>{% endfor %}</p>
   {%- endif %}
+  {% include geri-baglantilar.html %}
   {% include bulten.html %}
 </article>
 {% include ilgili.html %}
