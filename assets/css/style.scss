@@ -193,6 +193,7 @@ a { color: var(--mavi); text-underline-offset: 0.15em; text-decoration-thickness
 
 .etiketler { display: flex; flex-wrap: wrap; gap: 0.2rem 0.8rem; margin: 2rem 0 0; font-family: var(--arayuz); font-size: 0.85rem; }
 .etiketler a { text-decoration: none; }
+.etiketler.ust { margin: -1.4rem 0 2rem; }
 
 .geri-baglantilar {
   margin: 2.5rem 0 0;
@@ -210,15 +211,8 @@ a { color: var(--mavi); text-underline-offset: 0.15em; text-decoration-thickness
   ul { list-style: none; margin: 0; padding: 0; }
   li { margin: 0 0 1rem; }
   li > a { font-family: var(--arayuz); font-size: 0.95rem; font-weight: 600; text-decoration: none; }
+  li > a:hover { text-decoration: underline; }
   p { margin: 0.2rem 0 0; font-size: 0.92rem; line-height: 1.55; color: var(--soluk); }
-}
-
-.bulten {
-  margin: 2rem 0 0;
-  padding: 0.9rem 1rem;
-  background: var(--ikincil);
-  font-family: var(--arayuz);
-  font-size: 0.85rem;
 }
 
 .bolum-etiketi, .yorumlar .section-label {

@@ -10,14 +10,13 @@ layout: default
     · {% include tur.html girdi=page %} · {{ kelime | divided_by: 200 | plus: 1 }} dk okuma
     {%- if yazar != site.author %} · <a class="p-author h-card" href="{{ '/yazar/' | append: yazar | slugify: 'latin' | append: '/' | relative_url }}">{{ yazar }}</a>{% endif %}
   </p>
+  {%- if page.tags.size > 0 %}
+  <p class="etiketler ust">{% for tag in page.tags %}<a class="p-category" href="{{ '/etiketler/' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a>{% endfor %}</p>
+  {%- endif %}
   <div class="icerik e-content">
     {{ content }}
   </div>
-  {%- if page.tags.size > 0 %}
-  <p class="etiketler">{% for tag in page.tags %}<a class="p-category" href="{{ '/etiketler/' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a>{% endfor %}</p>
-  {%- endif %}
   {% include geri-baglantilar.html %}
-  {% include bulten.html %}
 </article>
 {% include ilgili.html %}
 {% include yorumlar.html %}
