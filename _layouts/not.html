@@ -6,13 +6,13 @@ layout: default
   <h1 class="p-name">{{ page.title }}</h1>
   {%- endif %}
   <p class="ust-bilgi"><a class="u-url" href="{{ page.url | relative_url }}"><time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}">{% include tarih.html tarih=page.date %}, {{ page.date | date: "%H:%M" }}</time> <span class="sonsuz">∞</span></a></p>
+  {%- if page.tags.size > 0 %}
+  <p class="etiketler ust">{% for tag in page.tags %}<a class="p-category" href="{{ '/etiketler/' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a>{% endfor %}</p>
+  {%- endif %}
   <div class="icerik e-content not-metni">
     {{ content }}
   </div>
-  {%- if page.tags.size > 0 %}
-  <p class="etiketler">{% for tag in page.tags %}<a class="p-category" href="{{ '/etiketler/' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a>{% endfor %}</p>
-  {%- endif %}
   {% include geri-baglantilar.html %}
 </article>
+{% include ilgili.html %}
 {% include yorumlar.html %}
-{% include gezinme.html %}

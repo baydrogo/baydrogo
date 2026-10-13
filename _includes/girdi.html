@@ -6,9 +6,11 @@
   <h2 class="girdi-baslik p-name"><a href="{{ g.url | relative_url }}">{{ g.title }}</a></h2>
   {%- endif %}
   <p class="ust-bilgi"><a class="u-url" href="{{ g.url | relative_url }}"><time class="dt-published" datetime="{{ g.date | date_to_xmlschema }}">{% include tarih.html tarih=g.date %}</time> <span class="sonsuz">∞</span></a></p>
-  <div class="e-content not-metni{% if uzun > 60 %} not-uzun{% endif %}">{{ g.content }}</div>
-  {%- if uzun > 60 %}
-  <p class="not-kisa">{% if g.description %}{{ g.description }}{% else %}{{ g.content | kesit: 40 }}{% endif %} <a href="{{ g.url | relative_url }}">devamı →</a></p>
+  {%- comment %}100 kelimeden uzun notlar akışta kısaltılır: özet varsa o, yoksa baştan kesit.{% endcomment %}
+  {%- if uzun > 100 %}
+  <p class="e-content not-kisa">{% if g.description %}{{ g.description }}{% else %}{{ g.content | kesit: 50 }}{% endif %} <a href="{{ g.url | relative_url }}">devamı →</a></p>
+  {%- else %}
+  <div class="e-content not-metni">{{ g.content }}</div>
   {%- endif %}
 </article>
 {%- else %}

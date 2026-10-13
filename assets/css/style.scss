@@ -194,6 +194,7 @@ a { color: var(--mavi); text-underline-offset: 0.15em; text-decoration-thickness
 .etiketler { display: flex; flex-wrap: wrap; gap: 0.2rem 0.8rem; margin: 2rem 0 0; font-family: var(--arayuz); font-size: 0.85rem; }
 .etiketler a { text-decoration: none; }
 .etiketler.ust { margin: -1.4rem 0 2rem; }
+.tek-not > .etiketler.ust { margin: -0.35rem 0 1.25rem; }
 
 .geri-baglantilar {
   margin: 2.5rem 0 0;
@@ -332,11 +333,7 @@ a { color: var(--mavi); text-underline-offset: 0.15em; text-decoration-thickness
 
 /* ---------- Telefonda uzun notlar kısa kesitle ---------- */
 
-.not-kisa { display: none; margin: 0; }
+.not-kisa { margin: 0; }
 .not-kisa a { font-family: var(--arayuz); font-size: 0.85rem; text-decoration: none; white-space: nowrap; }
 .kenar-etiketler .tumu { color: var(--mavi); }
 
-@media (max-width: 860px) {
-  .girdi .not-uzun { display: none; }
-  .girdi .not-kisa { display: block; }
-}
