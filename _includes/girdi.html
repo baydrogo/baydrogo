@@ -1,16 +1,21 @@
 {%- assign g = include.girdi -%}
 {%- if g.tur == "not" %}
+{%- assign uzun = g.content | kelime_sayisi %}
 <article class="girdi girdi-not h-entry">
   {%- if g.baslikli %}
   <h2 class="girdi-baslik p-name"><a href="{{ g.url | relative_url }}">{{ g.title }}</a></h2>
   {%- endif %}
   <p class="ust-bilgi"><a class="u-url" href="{{ g.url | relative_url }}"><time class="dt-published" datetime="{{ g.date | date_to_xmlschema }}">{% include tarih.html tarih=g.date %}</time> <span class="sonsuz">∞</span></a></p>
-  <div class="e-content not-metni">{{ g.content }}</div>
+  <div class="e-content not-metni{% if uzun > 60 %} not-uzun{% endif %}">{{ g.content }}</div>
+  {%- if uzun > 60 %}
+  <p class="not-kisa">{% if g.description %}{{ g.description }}{% else %}{{ g.content | kesit: 40 }}{% endif %} <a href="{{ g.url | relative_url }}">devamı →</a></p>
+  {%- endif %}
 </article>
 {%- else %}
 <article class="girdi girdi-yazi h-entry">
   <h2 class="girdi-baslik p-name"><a class="u-url" href="{{ g.url | relative_url }}">{{ g.title }}</a></h2>
   <p class="ust-bilgi"><time class="dt-published" datetime="{{ g.date | date_to_xmlschema }}">{% include tarih.html tarih=g.date %}</time> · {% include tur.html girdi=g %}{% if g.author and g.author != site.author %} · <span class="p-author">{{ g.author }}</span>{% endif %}</p>
-  <p class="p-summary">{{ g.description | default: g.excerpt | strip_html | truncatewords: 40 }}</p>
+  {%- comment %}Özet (Obsidian'da `özet`) yazılmışsa o, yoksa yazının başından otomatik kesit.{% endcomment %}
+  <p class="p-summary">{% if g.description %}{{ g.description }}{% else %}{{ g.content | kesit: 45 }}{% endif %}</p>
 </article>
 {%- endif %}

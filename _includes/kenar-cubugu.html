@@ -21,12 +21,13 @@
     </p>
   </div>
 
-  {%- assign etiketler = site.tags | sort %}
-  {%- if etiketler.size > 0 %}
+  {%- assign sik = site.tags | sik_etiketler: 12 %}
+  {%- if sik.size > 0 %}
   <div class="kenar-bolum">
     <p class="kenar-baslik">Etiketler</p>
     <p class="kenar-etiketler">
-      {%- for e in etiketler %}<a href="{{ '/etiketler/' | relative_url }}#{{ e[0] | slugify }}">#{{ e[0] }}</a>{% endfor %}
+      {%- for ad in sik %}<a href="{{ '/etiketler/' | relative_url }}#{{ ad | slugify }}">#{{ ad }}</a>{% endfor %}
+      {%- if site.tags.size > 12 %}<a class="tumu" href="{{ '/etiketler/' | relative_url }}">tümü →</a>{% endif %}
     </p>
   </div>
   {%- endif %}
