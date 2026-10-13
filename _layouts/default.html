@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {%- if page.tur == "not" -%}
+  {%- if page.tur == "not" and page.baslikli != true -%}
     {%- assign baslik = page.content | strip_html | truncatewords: 8 | append: " — " | append: site.title -%}
   {%- elsif page.title and page.title != site.title -%}
     {%- assign baslik = page.title | append: " — " | append: site.title -%}

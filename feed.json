@@ -13,7 +13,7 @@ permalink: /feed.json
     {
       "id": {{ g.url | absolute_url | jsonify }},
       "url": {{ g.url | absolute_url | jsonify }},
-      {%- if g.tur != "not" %}
+      {%- if g.tur != "not" or g.baslikli %}
       "title": {{ g.title | jsonify }},
       {%- endif %}
       "content_html": {{ g.content | jsonify }},

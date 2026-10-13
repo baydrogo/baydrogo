@@ -1,4 +1,5 @@
 ---
+title: "Edward Said ve Dolma Kalem"
 date: 2025-01-12 12:00:00 +0300
 permalink: /edward-said-ve-dolma-kalem/
 description: "Edward Said'in dolma kaleme olan tutkusunu ve Sheaffer ile olan hikâyesini aktarıyorum."

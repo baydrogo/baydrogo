@@ -7,13 +7,13 @@
 | Tür | Klasör | Başlık | Adres |
 |---|---|---|---|
 | Yazı | `_posts/` | var | `/yazinin-adi/` |
-| Not | `_posts/notlar/` | yok | `/2026/10/13/ilk-bes-kelime/` |
+| Not | `_posts/notlar/` | isteğe bağlı | `/2026/10/13/ilk-bes-kelime/` |
 
-Notların adresi metnin ilk beş kelimesinden üretilir (`_plugins/not_adresi.rb`); ön bilgide `slug:` varsa o kullanılır. Notlar ana sayfa listesinde tam metinle, `/notlar/` sayfasında ve RSS/JSON akışında başlıksız görünür.
+Nota `title:` verilirse başlıklı not olur, başlığı akışta ve sayfasında görünür. Notların adresi başlıktan, başlık yoksa metnin ilk beş kelimesinden üretilir (`_plugins/not_adresi.rb`); ön bilgide `slug:` varsa o kullanılır. Notlar ana sayfa listesinde tam metinle, `/notlar/` sayfasında ve RSS/JSON akışında başlıksız görünür.
 
 ## Obsidian'dan yayın
 
-Kasadaki `Baydrogo/` klasörüne yaz, özelliklere `tür: not` ya da `tür: yazı` ekle (şablonlar: `T_Baydrogo Not`, `T_Baydrogo Yazı`). Obsidian'daki **Baydrogo Yayın** eklentisi (kâğıt uçak simgesi) şunu çalıştırır:
+Kasadaki `Baydrogo/` klasörüne yaz, özelliklere `tür: not` ya da `tür: yazı` ekle (nota `başlık` da verebilirsin) (şablonlar: `T_Baydrogo Not`, `T_Baydrogo Yazı`). Obsidian'daki **Baydrogo Yayın** eklentisi (kâğıt uçak simgesi) şunu çalıştırır:
 
 ```bash
 python3 scripts/yayinla.py

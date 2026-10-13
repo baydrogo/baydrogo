@@ -1,5 +1,5 @@
-{%- comment -%}Listelerde girdinin adı: yazıda başlık, notta ilk kelimeler.{%- endcomment -%}
-{%- if include.girdi.tur == "not" -%}
+{%- comment -%}Listelerde girdinin adı: yazıda ve başlıklı notta başlık, başlıksız notta ilk kelimeler.{%- endcomment -%}
+{%- if include.girdi.tur == "not" and include.girdi.baslikli != true -%}
 {{ include.girdi.content | markdownify | strip_html | strip_newlines | truncatewords: 10 }}
 {%- else -%}
 {{ include.girdi.title }}

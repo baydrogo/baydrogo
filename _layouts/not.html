@@ -2,6 +2,9 @@
 layout: default
 ---
 <article class="tek tek-not h-entry">
+  {%- if page.baslikli %}
+  <h1 class="p-name">{{ page.title }}</h1>
+  {%- endif %}
   <p class="ust-bilgi"><a class="u-url" href="{{ page.url | relative_url }}"><time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}">{% include tarih.html tarih=page.date %}, {{ page.date | date: "%H:%M" }}</time> <span class="sonsuz">∞</span></a></p>
   <div class="icerik e-content not-metni">
     {{ content }}

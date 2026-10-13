@@ -1,6 +1,9 @@
 {%- assign g = include.girdi -%}
 {%- if g.tur == "not" %}
 <article class="girdi girdi-not h-entry">
+  {%- if g.baslikli %}
+  <h2 class="girdi-baslik p-name"><a href="{{ g.url | relative_url }}">{{ g.title }}</a></h2>
+  {%- endif %}
   <p class="ust-bilgi"><a class="u-url" href="{{ g.url | relative_url }}"><time class="dt-published" datetime="{{ g.date | date_to_xmlschema }}">{% include tarih.html tarih=g.date %}</time> <span class="sonsuz">∞</span></a></p>
   <div class="e-content not-metni">{{ g.content }}</div>
 </article>

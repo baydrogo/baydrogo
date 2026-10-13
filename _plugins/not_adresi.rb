@@ -1,4 +1,4 @@
-# Notların adresini, micro.blog'daki gibi, metnin ilk kelimelerinden üretir:
+# Notların adresini, micro.blog'daki gibi, metnin (başlıklı notta başlığın) ilk kelimelerinden üretir:
 #   _posts/notlar/2026-10-12-0915.md  →  /2026/10/12/kalemle-okumak-bir-konusmaya-donusur/
 # Ön bilgide `slug:` yazılıysa o kullanılır. Not yayımlandıktan sonra ilk kelimeleri
 # değiştirirsen adres de değişir; eski adresi korumak için `slug:` ekle.
@@ -17,9 +17,15 @@ module Notoloji
         # Jekyll, dosya adındaki tarihten sonraki kısmı (ör. "0915") zaten slug yapar;
         # ancak ön bilgide elle farklı bir slug verilmişse ona dokunma.
         dosya_slug = not_.basename_without_ext.sub(/\A\d{4}-\d{2}-\d{2}-/, "")
+
+        # Jekyll her yazıya dosya adından bir başlık uydurur; ön bilgide gerçek bir
+        # başlık yazılmışsa not "başlıklı" sayılır ve başlığı sitede görünür.
+        baslikli = not_.data["title"] && not_.data["title"] != Jekyll::Utils.titleize_slug(dosya_slug)
+        not_.data["baslikli"] = baslikli ? true : false
+
         next if not_.data["slug"] && not_.data["slug"] != dosya_slug
 
-        slug = uret(not_.content)
+        slug = uret(baslikli ? not_.data["title"] : not_.content)
         next if slug.empty?
 
         not_.data["slug"] = slug

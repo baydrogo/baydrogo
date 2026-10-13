@@ -5,7 +5,7 @@ Obsidian → Baydrogo yayın betiği.
 Kasadaki `Baydrogo/` klasörünü siteyle eşitler, commit edip GitHub'a yükler.
 
 Kasada:
-  tür: not            → başlıksız not      (_posts/notlar/)
+  tür: not            → not                (_posts/notlar/); `başlık` verilirse başlıklı not
   tür: yazı           → başlıklı yazı      (_posts/yazilar/), başlık = dosya adı ya da `başlık`
   tür yoksa           → yayımlanmaz (taslak)
   tags: [kalem, ...]  → etiketler
@@ -137,6 +137,7 @@ class Girdi:
         tur = liste(al(ozellik, "tür", "tur"))
         tur = (tur[0] if tur else "").lower().translate(HARF)
         self.tur = tur if tur in ("not", "yazi") else None
+        self.not_basligi = al(ozellik, "başlık", "baslik") if self.tur == "not" else None
         self.baslik = al(ozellik, "başlık", "baslik") or yol.stem
         self.eklenecek = {}
 
@@ -148,7 +149,10 @@ class Girdi:
 
         adres = al(ozellik, "adres")
         if not adres:
-            adres = sluglastir(govde, KELIME) if self.tur == "not" else sluglastir(self.baslik)
+            if self.tur == "not":
+                adres = sluglastir(self.not_basligi) if self.not_basligi else sluglastir(govde, KELIME)
+            else:
+                adres = sluglastir(self.baslik)
             adres = adres or tarih.strftime("%H%M")
             self.eklenecek["adres"] = adres
         self.adres = str(adres)
@@ -234,6 +238,8 @@ def donustur(g, yayimlananlar, dosyalar, gorseller):
     metin = re.sub(r"^(\s*>\s*)\[![\w-]+\][+-]?\s*", r"\1", metin, flags=re.M)  # callout işareti
 
     on = ["---", f"date: {g.tarih.strftime('%Y-%m-%d %H:%M:00')} {SAAT_DILIMI}"]
+    if g.tur == "not" and g.not_basligi:
+        on.append(f"title: {yaml_metin(g.not_basligi)}")
     if g.tur == "yazi":
         on.append(f"title: {yaml_metin(g.baslik)}")
         ozet = al(g.ozellik, "özet", "ozet")

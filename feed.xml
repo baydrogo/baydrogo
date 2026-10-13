@@ -14,7 +14,7 @@ permalink: /feed.xml
     {%- for g in site.posts limit: 30 %}
     <item>
       {%- comment %}Notlar başlıksız gider; micro.blog ve okuyucular bunları kısa not olarak gösterir.{% endcomment %}
-      {%- if g.tur != "not" %}
+      {%- if g.tur != "not" or g.baslikli %}
       <title>{{ g.title | xml_escape }}</title>
       {%- endif %}
       <link>{{ g.url | absolute_url }}</link>
