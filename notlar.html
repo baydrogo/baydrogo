@@ -8,7 +8,7 @@ permalink: /notlar/
 <div class="akis h-feed">
   {%- assign notlar = site.posts | where: "tur", "not" %}
   {%- for g in notlar %}
-  {% include kenar-girdi.html girdi=g %}
+  {% include girdi.html girdi=g %}
   {%- else %}
   <p class="sayfa-aciklama">Henüz not yok.</p>
   {%- endfor %}

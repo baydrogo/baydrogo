@@ -9,7 +9,7 @@
   <p class="bolum-etiketi">Bağlantılı</p>
   <ul class="liste">
     {%- for p in related limit: 5 %}
-    {% include kenar-satir.html girdi=p %}
+    {% include satir.html girdi=p %}
     {%- endfor %}
   </ul>
 </section>

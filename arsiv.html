@@ -11,7 +11,7 @@ permalink: /arsiv/
   <h2 class="grup-basligi">{{ yil.name }}</h2>
   <ul class="liste">
     {%- for g in yil.items %}
-    {% include kenar-satir.html girdi=g %}
+    {% include satir.html girdi=g %}
     {%- endfor %}
   </ul>
 </section>

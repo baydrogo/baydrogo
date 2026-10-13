@@ -1,0 +1,33 @@
+<aside class="kenar-cubugu">
+  <a class="site-adi" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+  {%- if site.tanitim %}
+  <p class="tanitim">{{ site.tanitim }}</p>
+  {%- endif %}
+
+  <nav class="menu">
+    <a href="{{ '/' | relative_url }}"{% if include.bolum == "akis" %} aria-current="page"{% endif %}>Akış</a>
+    <a href="{{ '/yazilar/' | relative_url }}"{% if include.bolum == "yazilar" %} aria-current="page"{% endif %}>Yazılar</a>
+    <a href="{{ '/notlar/' | relative_url }}"{% if include.bolum == "notlar" %} aria-current="page"{% endif %}>Notlar</a>
+    <a href="{{ '/arsiv/' | relative_url }}"{% if include.bolum == "arsiv" %} aria-current="page"{% endif %}>Arşiv</a>
+    <a href="{{ '/hakkinda/' | relative_url }}"{% if include.bolum == "hakkinda" %} aria-current="page"{% endif %}>Hakkında</a>
+  </nav>
+
+  <div class="kenar-bolum">
+    <p class="kenar-baslik">Takip et</p>
+    <p class="kenar-baglantilar">
+      <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+      <a href="{{ '/feed.json' | relative_url }}">JSON Feed</a>
+      {%- if site.bulten %}<a href="{{ site.bulten }}">E-posta</a>{% endif %}
+    </p>
+  </div>
+
+  {%- assign etiketler = site.tags | sort %}
+  {%- if etiketler.size > 0 %}
+  <div class="kenar-bolum">
+    <p class="kenar-baslik">Etiketler</p>
+    <p class="kenar-etiketler">
+      {%- for e in etiketler %}<a href="{{ '/etiketler/' | relative_url }}#{{ e[0] | slugify }}">#{{ e[0] }}</a>{% endfor %}
+    </p>
+  </div>
+  {%- endif %}
+</aside>

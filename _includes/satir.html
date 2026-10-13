@@ -1,0 +1,6 @@
+{%- assign g = include.girdi -%}
+<li class="satir">
+  <a class="{% if g.tur == 'not' %}satir-not{% else %}satir-yazi{% endif %}" href="{{ g.url | relative_url }}">{% include girdi-adi.html girdi=g %}</a>
+  {%- if g.author and g.author != site.author %} <span class="satir-yazar">{{ g.author }}</span>{% endif %}
+  <time datetime="{{ g.date | date_to_xmlschema }}">{% include tarih.html tarih=g.date kisa=true %}</time>
+</li>

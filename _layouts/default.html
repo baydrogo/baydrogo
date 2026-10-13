@@ -27,36 +27,18 @@
 </head>
 <body>
   {%- assign u = page.url -%}
-  {%- if page.tur == "yazi" or u == "/yazilar/" -%}{%- assign bolum = "yazilar" -%}
+  {%- if u == "/" or u contains "/sayfa/" -%}{%- assign bolum = "akis" -%}
+  {%- elsif page.tur == "yazi" or u == "/yazilar/" -%}{%- assign bolum = "yazilar" -%}
   {%- elsif page.tur == "not" or u == "/notlar/" -%}{%- assign bolum = "notlar" -%}
   {%- elsif u == "/arsiv/" or u == "/etiketler/" or u contains "/yazar/" -%}{%- assign bolum = "arsiv" -%}
   {%- elsif u == "/hakkinda/" -%}{%- assign bolum = "hakkinda" -%}
   {%- endif %}
-
-  <header class="site-ust">
-    <div class="kap">
-      <a class="site-adi" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-      <nav class="menu">
-        <a href="{{ '/yazilar/' | relative_url }}"{% if bolum == "yazilar" %} aria-current="page"{% endif %}>Yazılar</a>
-        <a href="{{ '/notlar/' | relative_url }}"{% if bolum == "notlar" %} aria-current="page"{% endif %}>Notlar</a>
-        <a href="{{ '/arsiv/' | relative_url }}"{% if bolum == "arsiv" %} aria-current="page"{% endif %}>Arşiv</a>
-        <a href="{{ '/hakkinda/' | relative_url }}"{% if bolum == "hakkinda" %} aria-current="page"{% endif %}>Hakkında</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="kap">
-    {{ content }}
-  </main>
-
-  <footer class="site-alt">
-    <div class="kap">
-      <span>{{ site.title }}</span>
-      <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
-      <a href="{{ '/feed.json' | relative_url }}">JSON Feed</a>
-      {%- if site.bulten %}<a href="{{ site.bulten }}">E-posta bülteni</a>{% endif %}
-      <a href="{{ '/etiketler/' | relative_url }}">Etiketler</a>
-    </div>
-  </footer>
+  <div class="duzen{% if site.kenar_cubugu == 'sag' %} duzen-sag{% endif %}">
+    {% include kenar-cubugu.html bolum=bolum %}
+    <main class="icerik-alani">
+      {{ content }}
+      <footer class="site-alt">© {{ site.time | date: "%Y" }} {{ site.title }} · <a href="{{ '/feed.xml' | relative_url }}">RSS</a></footer>
+    </main>
+  </div>
 </body>
 </html>
