@@ -46,6 +46,11 @@ KELIME = 5
 HARF = str.maketrans({"ç": "c", "ğ": "g", "ı": "i", "ö": "o", "ş": "s", "ü": "u",
                       "â": "a", "î": "i", "û": "u", "é": "e", "è": "e", "à": "a"})
 GORSEL_UZANTI = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg", ".avif"}
+# Fotoğraflar siteye küçültülmüş, sıkıştırılmış ve EXIF/konum bilgisi silinmiş WebP olarak gider.
+# Kasadaki asıl dosyalara dokunulmaz. ImageMagick yoksa görseller olduğu gibi kopyalanır.
+MAGICK = shutil.which("magick") or next((y for y in ("/opt/homebrew/bin/magick", "/usr/local/bin/magick") if os.path.exists(y)), None)
+WEBP_UZANTI = {".png", ".jpg", ".jpeg", ".webp"}
+EN_FAZLA = 1280  # piksel (yazı sütunu 640 px × 2, retina)
 
 
 # ---------- yardımcılar ----------
@@ -279,7 +284,24 @@ def donustur(g, yayimlananlar, dosyalar, gorseller):
 
 
 def gorsel_adi(yol):
-    return sluglastir(yol.stem) + yol.suffix.lower()
+    uzanti = yol.suffix.lower()
+    if MAGICK and uzanti in WEBP_UZANTI:
+        uzanti = ".webp"
+    return sluglastir(yol.stem) + uzanti
+
+
+def gorsel_kopyala(kaynak, hedef):
+    """Görseli siteye kopyalar; fotoğrafları küçültüp WebP yapar. Kaynak değişmediyse atlar."""
+    zaman = kaynak.stat().st_mtime
+    if hedef.exists() and hedef.stat().st_mtime == zaman:
+        return
+    if MAGICK and kaynak.suffix.lower() in WEBP_UZANTI:
+        subprocess.run([MAGICK, str(kaynak), "-auto-orient", "-strip",
+                        "-resize", f"{EN_FAZLA}x{EN_FAZLA}>", "-quality", "80", str(hedef)],
+                       check=True, capture_output=True, text=True)
+    else:
+        shutil.copyfile(kaynak, hedef)
+    os.utime(hedef, (zaman, zaman))
 
 
 def kasaya_yaz(g):
@@ -358,12 +380,12 @@ def main():
     for y in silinecek:
         y.unlink()
 
-    if GORSEL_DIZIN.exists():
-        shutil.rmtree(GORSEL_DIZIN)
-    if gorseller:
-        GORSEL_DIZIN.mkdir(parents=True)
-        for ad, kaynak in gorseller.items():
-            shutil.copy2(kaynak, GORSEL_DIZIN / ad)
+    GORSEL_DIZIN.mkdir(parents=True, exist_ok=True)
+    for eski_gorsel in GORSEL_DIZIN.iterdir():
+        if eski_gorsel.name not in gorseller:
+            eski_gorsel.unlink()
+    for ad, kaynak in gorseller.items():
+        gorsel_kopyala(kaynak, GORSEL_DIZIN / ad)
 
     if yerel:
         print("Dosyalar yazıldı (yerel mod, yüklenmedi).")

@@ -6,10 +6,12 @@
     </div>
     <p class="tanitim p-note">{{ site.description }}</p>
   </div>
+  {%- unless include.bolum == "hakkinda" %}
   <picture>
     <source media="(max-width: 860px)" srcset="{{ '/assets/img/drogo-serit.webp' | relative_url }}" width="1280" height="401">
     <img class="kenar-gorsel" src="{{ '/assets/img/drogo-oda.webp' | relative_url }}" alt="Kaledeki odasında, çöle bakan pencerenin önünde masada yazı yazan bir subay" width="480" height="384">
   </picture>
+  {%- endunless %}
 
   <nav class="menu">
     <a href="{{ '/' | relative_url }}"{% if include.bolum == "akis" %} aria-current="page"{% endif %}>Akış</a>
