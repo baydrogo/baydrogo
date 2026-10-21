@@ -1,22 +1,16 @@
 <header class="ust">
-  <div class="ust-satir">
+  <div class="ust-kutu">
     <div class="h-card ust-kimlik">
       <a class="site-adi p-name u-url u-uid" href="{{ '/' | relative_url }}">{{ site.title }}</a>
       <img class="karpuz u-logo" src="{{ '/assets/karpuz.svg' | relative_url }}" alt="Karpuz dilimi" title="Free Palestine" width="31" height="16">
+      <p class="p-note gizli">{{ site.description }}</p>
     </div>
-    <p class="ust-simgeler">
-      <a href="{{ '/feed.xml' | relative_url }}" title="RSS" aria-label="RSS"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg></a>
-      {%- if site.bulten %}
-      <a href="{{ site.bulten }}" title="E-posta bülteni" aria-label="E-posta bülteni"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
-      {%- endif %}
-    </p>
+    <nav class="menu">
+      <a href="{{ '/' | relative_url }}"{% if include.bolum == "akis" %} aria-current="page"{% endif %}>Akış</a>
+      <a href="{{ '/yazilar/' | relative_url }}"{% if include.bolum == "yazilar" %} aria-current="page"{% endif %}>Yazılar</a>
+      <a href="{{ '/notlar/' | relative_url }}"{% if include.bolum == "notlar" %} aria-current="page"{% endif %}>Notlar</a>
+      <a href="{{ '/arsiv/' | relative_url }}"{% if include.bolum == "arsiv" %} aria-current="page"{% endif %}>Arşiv</a>
+      <a href="{{ '/hakkinda/' | relative_url }}"{% if include.bolum == "hakkinda" %} aria-current="page"{% endif %}>Hakkında</a>
+    </nav>
   </div>
-  <p class="tanitim">{{ site.description }}</p>
-  <nav class="menu">
-    <a href="{{ '/' | relative_url }}"{% if include.bolum == "akis" %} aria-current="page"{% endif %}>Akış</a>
-    <a href="{{ '/yazilar/' | relative_url }}"{% if include.bolum == "yazilar" %} aria-current="page"{% endif %}>Yazılar</a>
-    <a href="{{ '/notlar/' | relative_url }}"{% if include.bolum == "notlar" %} aria-current="page"{% endif %}>Notlar</a>
-    <a href="{{ '/arsiv/' | relative_url }}"{% if include.bolum == "arsiv" %} aria-current="page"{% endif %}>Arşiv</a>
-    <a href="{{ '/hakkinda/' | relative_url }}"{% if include.bolum == "hakkinda" %} aria-current="page"{% endif %}>Hakkında</a>
-  </nav>
 </header>

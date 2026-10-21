@@ -450,3 +450,62 @@ body { font-size: 18px; line-height: 1.7; }
   .not-satir { grid-template-columns: 1fr; gap: 0.35rem; }
   .not-zaman span { display: inline; margin-left: 0.4rem; }
 }
+
+/* ---------- naeemnur.com yerleşiminden esinli düzen ---------- */
+:root { --isaret: rgba(31, 95, 191, 0.12); }
+@media (prefers-color-scheme: dark) { :root { --isaret: rgba(122, 167, 240, 0.2); } }
+.gizli { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+.sade { max-width: 48rem; }
+.ust { margin-bottom: 3rem; }
+.ust-kutu {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.6rem 1.5rem;
+  padding: 0.7rem 0.9rem 0.7rem 1.1rem; border: 1px solid var(--cizgi); border-radius: 6px;
+}
+.ust .menu { border: 0; padding: 0; gap: 0.15rem; }
+.ust .menu a {
+  font-size: 0.85rem; font-weight: 400; letter-spacing: 0; text-transform: none;
+  padding: 0.2rem 0.55rem; border-radius: 4px;
+}
+.ust .menu a[aria-current="page"] { color: var(--metin); text-decoration: none; background: var(--isaret); }
+
+/* Sayfa başlığı vurgulu, açıklaması yanında */
+.sayfa-basligi {
+  display: inline-block; vertical-align: middle;
+  font-size: 1.6rem; font-weight: 600; letter-spacing: 0;
+  margin: 0 0 2rem; padding: 0.3rem 0.7rem; background: var(--isaret); border-radius: 4px;
+}
+.sayfa-basligi + .sayfa-aciklama {
+  display: inline-block; vertical-align: middle; max-width: 26rem;
+  margin: 0 0 2rem 1rem; font-size: 0.88rem; line-height: 1.5;
+}
+
+/* Yazılar: kart satırları */
+.kartlar { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.kart {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 0.9rem 1.1rem; background: var(--ikincil); border-radius: 6px;
+  color: var(--metin); text-decoration: none;
+}
+.kart:hover { background: var(--isaret); }
+.kart-baslik { display: block; font-size: 1.05rem; line-height: 1.4; }
+.kart-bilgi { display: block; margin-top: 0.15rem; font-size: 0.8rem; color: var(--soluk); }
+.kart-ok { font-size: 1.4rem; color: var(--soluk); }
+.grup-basligi { margin-top: 0; }
+
+/* Notlar: kart zemininde zaman çizelgesi */
+.not-satir { padding: 1.1rem 1.2rem; border-top: 0; background: var(--ikincil); border-radius: 6px; margin-bottom: 0.6rem; }
+.not-satir:first-child { padding-top: 1.1rem; }
+
+/* Yazı / not sayfası */
+.geri-don { display: inline-block; margin: 0 0 1.25rem; font-size: 0.85rem; color: var(--soluk); text-decoration: none; }
+.geri-don:hover { color: var(--mavi); }
+.tek h1 { display: inline-block; font-size: 1.9rem; padding: 0.3rem 0.7rem; margin-left: -0.7rem; background: var(--isaret); border-radius: 4px; }
+
+@media (max-width: 600px) {
+  .ust-kutu { padding: 0.7rem 0.8rem; }
+  .ust .menu { margin-left: -0.55rem; }
+  .sayfa-basligi { margin-bottom: 0.6rem; }
+  .sayfa-basligi + .sayfa-aciklama { display: block; margin: 0 0 1.75rem; }
+  .tek h1 { font-size: 1.6rem; }
+}
