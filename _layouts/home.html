@@ -1,11 +1,30 @@
 ---
 layout: default
 ---
-<div class="akis h-feed">
-  {%- for girdi in paginator.posts %}
-  {% include girdi.html girdi=girdi %}
+{%- if paginator.page == 1 %}
+{%- assign hakkinda = site.pages | where: "url", "/hakkinda/" | first %}
+{%- if hakkinda %}
+<section class="karsilama">
+  <a class="karsilama-gorsel" href="{{ hakkinda.url | relative_url }}"><img src="{{ '/assets/img/obsidian/drogo.webp' | relative_url }}" alt="Kaledeki odasında, çöle bakan pencerenin önünde masada yazı yazan bir subay" width="1280" height="853"></a>
+  <p>{% if hakkinda.description %}{{ hakkinda.description }}{% else %}{{ hakkinda.content | markdownify | kesit: 57 }}{% endif %} <a class="devami" href="{{ hakkinda.url | relative_url }}">Hakkında →</a></p>
+</section>
+{%- endif %}
+{%- endif %}
+
+<ul class="akis-liste h-feed">
+  {%- for g in paginator.posts %}
+  {%- assign yazar = g.author | default: site.author %}
+  <li class="h-entry{% if g.tur == 'not' and g.baslikli != true %} basliksiz{% endif %}">
+    <a class="akis-baslik p-name u-url" href="{{ g.url | relative_url }}">{% include girdi-adi.html girdi=g %}</a>
+    <p class="ust-bilgi">
+      <time class="dt-published" datetime="{{ g.date | date_to_xmlschema }}">{% include tarih.html tarih=g.date %}</time>
+      {%- if g.tur == "not" %} · not{% endif %}
+      {%- if g.tags.size > 0 %} · {% for tag in g.tags %}<a class="p-category" href="{{ '/etiketler/' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a>{% unless forloop.last %} {% endunless %}{% endfor %}{% endif %}
+      {%- if yazar != site.author %} · <span class="p-author">{{ yazar }}</span>{% endif %}
+    </p>
+  </li>
   {%- endfor %}
-</div>
+</ul>
 
 {%- if paginator.total_pages > 1 %}
 <nav class="sayfalama">
