@@ -1,0 +1,18 @@
+<header class="ust">
+  <div class="ust-kutu">
+    <div class="h-card">
+      <div class="ust-kimlik">
+        <a class="site-adi p-name u-url u-uid" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        <img class="karpuz u-logo" src="{{ '/assets/karpuz.svg' | relative_url }}" alt="Karpuz dilimi" title="Free Palestine" width="31" height="16">
+      </div>
+      <p class="tanitim p-note">{{ site.description }}</p>
+    </div>
+    <nav class="menu">
+      <a href="{{ '/' | relative_url }}"{% if include.bolum == "akis" %} aria-current="page"{% endif %}>Blog</a>
+      <a href="{{ '/yazilar/' | relative_url }}"{% if include.bolum == "yazilar" %} aria-current="page"{% endif %}>Yazılar</a>
+      <a href="{{ '/notlar/' | relative_url }}"{% if include.bolum == "notlar" %} aria-current="page"{% endif %}>Notlar</a>
+      <a href="{{ '/arsiv/' | relative_url }}"{% if include.bolum == "arsiv" %} aria-current="page"{% endif %}>Arşiv</a>
+      <a href="{{ '/hakkinda/' | relative_url }}"{% if include.bolum == "hakkinda" %} aria-current="page"{% endif %}>Hakkında</a>
+    </nav>
+  </div>
+</header>

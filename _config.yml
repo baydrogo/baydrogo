@@ -22,10 +22,7 @@ yorum:
 
 plugins:
   - jekyll-sitemap
-  - jekyll-paginate
 
-paginate: 15
-paginate_path: "/sayfa/:num/"
 
 permalink: /:title/
 

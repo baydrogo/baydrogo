@@ -13,6 +13,9 @@
   <title>{{ baslik }}</title>
 {% include seo.html %}
   <meta name="color-scheme" content="light dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&display=swap">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
   <link rel="alternate" type="application/feed+json" title="{{ site.title }}" href="{{ '/feed.json' | relative_url }}">
@@ -35,12 +38,12 @@
   {%- elsif u == "/arsiv/" or u == "/etiketler/" or u contains "/yazar/" -%}{%- assign bolum = "arsiv" -%}
   {%- elsif u == "/hakkinda/" -%}{%- assign bolum = "hakkinda" -%}
   {%- endif %}
-  <div class="duzen{% if site.kenar_cubugu == 'sag' %} duzen-sag{% endif %}">
-    {% include kenar-cubugu.html bolum=bolum %}
+  <div class="sade">
+    {% include ust.html bolum=bolum %}
     <main class="icerik-alani">
       {{ content }}
-      <footer class="site-alt">© {{ site.time | date: "%Y" }} {{ site.title }} · <a href="{{ '/feed.xml' | relative_url }}">RSS</a></footer>
     </main>
+    {% include alt.html %}
   </div>
 </body>
 </html>

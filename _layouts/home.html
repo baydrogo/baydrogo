@@ -1,16 +1,25 @@
 ---
 layout: default
 ---
-<div class="akis h-feed">
-  {%- for girdi in paginator.posts %}
-  {% include girdi.html girdi=girdi %}
-  {%- endfor %}
-</div>
-
-{%- if paginator.total_pages > 1 %}
-<nav class="sayfalama">
-  {%- if paginator.previous_page %}<a href="{{ paginator.previous_page_path | relative_url }}">← Daha yeni</a>{% endif %}
-  <span>{{ paginator.page }} / {{ paginator.total_pages }}</span>
-  {%- if paginator.next_page %}<a href="{{ paginator.next_page_path | relative_url }}">Daha eski →</a>{% endif %}
-</nav>
+{%- assign hakkinda = site.pages | where: "url", "/hakkinda/" | first %}
+{%- if hakkinda %}
+<section class="karsilama">
+  <a class="karsilama-gorsel" href="{{ hakkinda.url | relative_url }}"><img src="{{ '/assets/img/obsidian/drogo.webp' | relative_url }}" alt="Kaledeki odasında, çöle bakan pencerenin önünde masada yazı yazan bir subay" width="1280" height="853"></a>
+  <p>{% if hakkinda.description %}{{ hakkinda.description }}{% else %}{{ hakkinda.content | markdownify | kesit: 57 }}{% endif %} <a class="devami" href="{{ hakkinda.url | relative_url }}">Hakkında →</a></p>
+</section>
 {%- endif %}
+
+<section class="son-yazilar">
+  <h2 class="son-baslik">Son yazılar</h2>
+  <ul class="sade-liste h-feed">
+    {%- assign yazilar = site.posts | where: "tur", "yazi" %}
+    {%- for g in yazilar limit: 5 %}
+    {%- assign _ay = g.date | date: "%-m" | minus: 1 %}
+    <li class="h-entry">
+      <a class="p-name u-url" href="{{ g.url | relative_url }}">{{ g.title }}</a>
+      <time class="dt-published" datetime="{{ g.date | date_to_xmlschema }}">{{ g.date | date: "%-d" }} {{ site.data.tr.kisa[_ay] }} {{ g.date | date: "%Y" }}</time>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+<p class="tumu-bag"><a href="{{ '/yazilar/' | relative_url }}">Tüm yazılar →</a></p>

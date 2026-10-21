@@ -2,6 +2,7 @@
 layout: sayfa
 title: "Hakkında"
 permalink: /hakkinda/
+description: "Bloğun adı, Buzzati'nin Tatar Çölü romanındaki Teğmen Giovanni Drogo'dan geliyor; burası Bastiani Kalesi'ndeki odadan tutulan notlar gibi. Akademik araştırmalarımın yanında okuma, yazma, not alma, kişisel bilgi yönetimi ve dijital araçlar; bir de dolma kalemler ve defterler üzerine yazılar ve notlar."
 kaynak: "Baydrogo/Hakkında.md"
 ---
 # Hakkında

@@ -4,11 +4,28 @@ title: Notlar
 permalink: /notlar/
 ---
 <h1 class="sayfa-basligi">Notlar</h1>
-<p class="sayfa-aciklama">Kısa, başlıksız, anlık notlar.</p>
-<div class="akis h-feed">
+<p class="sayfa-aciklama">Kısa, anlık notlar; yazıya dönüşmeyi bekleyen düşünceler.</p>
+<div class="not-akisi h-feed">
   {%- assign notlar = site.posts | where: "tur", "not" %}
   {%- for g in notlar %}
-  {% include girdi.html girdi=g %}
+  {%- assign uzun = g.content | kelime_sayisi %}
+  {%- assign _ay = g.date | date: "%-m" | minus: 1 %}
+  <article class="not-satir h-entry">
+    <a class="not-zaman u-url" href="{{ g.url | relative_url }}">
+      <time class="dt-published" datetime="{{ g.date | date_to_xmlschema }}">{{ g.date | date: "%d" }} {{ site.data.tr.kisa[_ay] }} {{ g.date | date: "%Y" }}<span>{{ g.date | date: "%H:%M" }}</span></time>
+    </a>
+    <div class="not-govde">
+      {%- if g.baslikli %}<h2 class="not-baslik p-name"><a href="{{ g.url | relative_url }}">{{ g.title }}</a></h2>{% endif %}
+      {%- if uzun > 100 %}
+      <p class="e-content">{% if g.description %}{{ g.description }}{% else %}{{ g.content | kesit: 50 }}{% endif %} <a class="devami" href="{{ g.url | relative_url }}">devamı →</a></p>
+      {%- else %}
+      <div class="e-content not-metni">{{ g.content }}</div>
+      {%- endif %}
+      {%- if g.tags.size > 0 %}
+      <p class="not-etiketler">{% for tag in g.tags %}<a class="p-category" href="{{ '/etiketler/' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a>{% endfor %}</p>
+      {%- endif %}
+    </div>
+  </article>
   {%- else %}
   <p class="sayfa-aciklama">Henüz not yok.</p>
   {%- endfor %}

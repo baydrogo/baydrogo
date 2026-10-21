@@ -1,0 +1,10 @@
+{%- assign g = include.girdi -%}
+<li>
+  <a class="kart" href="{{ g.url | relative_url }}">
+    <span class="kart-govde">
+      <span class="kart-baslik">{% include girdi-adi.html girdi=g %}</span>
+      <span class="kart-bilgi"><time datetime="{{ g.date | date_to_xmlschema }}">{% include tarih.html tarih=g.date %}</time>{% if g.author and g.author != site.author %} · {{ g.author }}{% endif %}</span>
+    </span>
+    <span class="kart-ok" aria-hidden="true">›</span>
+  </a>
+</li>

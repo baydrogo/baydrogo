@@ -1,0 +1,15 @@
+<footer class="alt">
+  {%- assign sik = site.tags | sik_etiketler: 12 %}
+  {%- if sik.size > 0 %}
+  <p class="alt-etiketler">
+    {%- for ad in sik %}<a href="{{ '/etiketler/' | relative_url }}#{{ ad | slugify }}">#{{ ad }}</a>{% endfor %}
+    {%- if site.tags.size > 12 %}<a class="tumu" href="{{ '/etiketler/' | relative_url }}">tümü →</a>{% endif %}
+  </p>
+  {%- endif %}
+  <p class="alt-satir">
+    © {{ site.time | date: "%Y" }} {{ site.title }} ·
+    <a href="{{ '/feed.xml' | relative_url }}">RSS</a> ·
+    <a href="{{ '/feed.json' | relative_url }}">JSON Feed</a>
+    {%- if site.bulten %} · <a href="{{ site.bulten }}">E-posta bülteni</a>{% endif %}
+  </p>
+</footer>

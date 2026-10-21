@@ -337,3 +337,183 @@ a { color: var(--mavi); text-underline-offset: 0.15em; text-decoration-thickness
 .not-kisa a { font-family: var(--arayuz); font-size: 0.85rem; text-decoration: none; white-space: nowrap; }
 .kenar-etiketler .tumu { color: var(--mavi); }
 
+
+/* =============================================
+   Sade tema denemesi (dal: tasarim-sade)
+   markpitblado.me'den esinli, beyaz ağırlıklı tek sütun.
+   Yazı tipi Atkinson Hyperlegible Next; vurgu yine mavi.
+   ============================================= */
+
+:root {
+  --govde: "Atkinson Hyperlegible Next", system-ui, -apple-system, sans-serif;
+  --arayuz: "Atkinson Hyperlegible Next", system-ui, -apple-system, sans-serif;
+  --kesik: 1px dashed var(--cizgi);
+}
+
+body { font-size: 18px; line-height: 1.7; }
+
+.sade { max-width: 44rem; margin: 0 auto; padding: 2.25rem 1.5rem 2.5rem; }
+
+/* Üst */
+.ust { margin-bottom: 2.5rem; }
+.ust-satir { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.ust-kimlik { display: flex; align-items: center; gap: 0.55rem; }
+.site-adi { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em; margin: 0; }
+.ust-simgeler { display: flex; gap: 0.9rem; margin: 0; }
+.ust-simgeler a { color: var(--soluk); display: inline-flex; &:hover { color: var(--mavi); } }
+.ust .tanitim { margin: 0.35rem 0 1.1rem; font-size: 0.95rem; color: var(--soluk); }
+.menu {
+  flex-direction: row; flex-wrap: wrap; gap: 0.2rem 1.4rem; margin: 0;
+  padding: 0.55rem 0; border-top: var(--kesik); border-bottom: var(--kesik);
+}
+.menu a {
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--metin); text-decoration: none;
+}
+.menu a:hover { color: var(--mavi); }
+.menu a[aria-current="page"] { color: var(--mavi); font-weight: 700; text-decoration: underline; text-underline-offset: 0.3em; text-decoration-thickness: 2px; }
+
+/* Akış: sıkı, taranabilir liste */
+.girdi { padding: 1.15rem 0; border-top: var(--kesik); }
+.girdi:first-child { border-top: 0; padding-top: 0; }
+.girdi-baslik { font-size: 1.15rem; font-weight: 700; margin: 0 0 0.15rem; }
+.ust-bilgi { font-size: 0.78rem; margin-bottom: 0.35rem; }
+.girdi-yazi .ust-bilgi { margin-bottom: 0.35rem; }
+.p-summary, .not-kisa { font-size: 0.98rem; }
+
+/* Tek yazı / not */
+.tek h1, .sayfa h1, .sayfa-basligi { font-size: 2.1rem; font-weight: 800; letter-spacing: -0.015em; }
+.tek-not .not-metni { font-size: 1.05rem; }
+.icerik, .not-metni { h2, h3, h4 { font-weight: 700; } }
+.geri-baglantilar { border-top: var(--kesik); }
+
+/* Alt */
+.alt { margin-top: 3.5rem; padding-top: 1.25rem; border-top: var(--kesik); font-size: 0.82rem; color: var(--soluk); }
+.alt-etiketler { display: flex; flex-wrap: wrap; gap: 0.2rem 0.9rem; margin: 0 0 0.75rem; }
+.alt-etiketler a { color: var(--soluk); text-decoration: none; &:hover { color: var(--mavi); } }
+.alt-etiketler .tumu { color: var(--mavi); }
+.alt-satir { margin: 0; }
+.alt-satir a { color: var(--soluk); &:hover { color: var(--mavi); } }
+
+@media (max-width: 480px) {
+  .sade { padding: 1.5rem 1.15rem 2rem; }
+  body { font-size: 17px; }
+  .menu { gap: 0.2rem 1.05rem; }
+}
+
+/* Ana sayfa: karşılama + yalın liste */
+.karsilama {
+  display: grid; grid-template-columns: 19rem 1fr; gap: 1.6rem; align-items: stretch;
+  margin: 0 0 2.75rem;
+}
+.karsilama-gorsel { display: block; }
+.karsilama-gorsel img { display: block; width: 100%; height: 100%; min-height: 11rem; object-fit: cover; border-radius: 4px; }
+.karsilama p { align-self: center; }
+.karsilama p { margin: 0; font-size: 0.98rem; line-height: 1.65; }
+.karsilama .devami { white-space: nowrap; text-decoration: none; font-size: 0.9rem; }
+
+.akis-liste { list-style: none; margin: 0; padding: 0; }
+.akis-liste li { display: flex; gap: 1.25rem; align-items: baseline; padding: 0.7rem 0; border-top: var(--kesik); }
+.akis-liste li:first-child { border-top: 0; padding-top: 0; }
+.akis-tarih { flex: 0 0 6.6rem; font-size: 0.82rem; color: var(--soluk); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.akis-sag { min-width: 0; }
+.akis-baslik { color: var(--metin); font-size: 1.05rem; font-weight: 400; line-height: 1.45; text-decoration: underline; text-decoration-color: var(--cizgi); text-underline-offset: 0.25em; }
+.akis-baslik:hover { color: var(--mavi); text-decoration-color: currentColor; }
+.akis-ek { display: inline; font-size: 0.78rem; color: var(--soluk); margin-left: 0.5rem; }
+.akis-ek > * { margin-right: 0.45rem; }
+.akis-ek a { color: var(--soluk); text-decoration: none; &:hover { color: var(--mavi); } }
+.akis-liste .basliksiz .akis-baslik { color: var(--metin); }
+
+@media (max-width: 600px) {
+  .karsilama { grid-template-columns: 1fr; gap: 1rem; }
+  .karsilama-gorsel img { height: auto; }
+  .akis-liste li { gap: 0.9rem; }
+  .akis-tarih { flex-basis: 5.9rem; font-size: 0.76rem; }
+  .akis-ek { display: block; margin: 0.1rem 0 0; }
+}
+
+/* Başlıklar daha ince */
+.site-adi { font-weight: 700; }
+.tek h1, .sayfa h1, .sayfa-basligi { font-weight: 600; letter-spacing: -0.01em; }
+.icerik, .not-metni { h2, h3, h4 { font-weight: 600; } }
+
+/* Notlar sayfası: solda zaman damgası, sağda notun kendisi */
+.not-akisi { margin-top: 0.5rem; }
+.not-satir { display: grid; grid-template-columns: 6.6rem minmax(0, 1fr); gap: 1.25rem; padding: 1.4rem 0; border-top: var(--kesik); }
+.not-satir:first-child { border-top: 0; padding-top: 0.5rem; }
+.not-zaman { font-size: 0.82rem; line-height: 1.5; color: var(--soluk); text-decoration: none; font-variant-numeric: tabular-nums; padding-top: 0.2rem; }
+.not-zaman span { display: block; opacity: 0.75; }
+.not-zaman:hover { color: var(--mavi); }
+.not-baslik { font-size: 1.1rem; font-weight: 600; margin: 0 0 0.4rem; a { color: var(--metin); text-decoration: none; &:hover { color: var(--mavi); } } }
+.not-govde .e-content { margin: 0; }
+.not-govde .devami { white-space: nowrap; text-decoration: none; font-size: 0.9rem; }
+.not-etiketler { display: flex; flex-wrap: wrap; gap: 0.2rem 0.7rem; margin: 0.6rem 0 0; font-size: 0.78rem; a { color: var(--soluk); text-decoration: none; &:hover { color: var(--mavi); } } }
+
+@media (max-width: 600px) {
+  .not-satir { grid-template-columns: 1fr; gap: 0.35rem; }
+  .not-zaman span { display: inline; margin-left: 0.4rem; }
+}
+
+/* ---------- naeemnur.com yerleşiminden esinli düzen (sadeleştirilmiş) ---------- */
+:root { --isaret: rgba(31, 95, 191, 0.08); }
+@media (prefers-color-scheme: dark) { :root { --isaret: rgba(122, 167, 240, 0.14); } }
+
+.sade { max-width: 46rem; }
+.ust { margin-bottom: 3rem; }
+.ust-kutu { display: flex; flex-direction: column; gap: 1rem; }
+.ust-kimlik { display: flex; align-items: center; gap: 0.55rem; }
+.ust .tanitim { margin: 0.2rem 0 0; font-size: 0.9rem; }
+.ust .menu { border: 0; padding: 0; margin: 0; gap: 0.2rem 1.25rem; }
+.ust .menu a { font-size: 0.9rem; font-weight: 400; letter-spacing: 0; text-transform: none; padding: 0; color: var(--metin); }
+.ust .menu a:hover { color: var(--mavi); }
+.ust .menu a[aria-current="page"] { color: var(--mavi); text-decoration: underline; text-underline-offset: 0.35em; text-decoration-thickness: 1.5px; }
+
+/* Sayfa başlığı, yanında açıklama (zeminsiz) */
+.sayfa-basligi { display: inline; font-size: 1.75rem; font-weight: 600; letter-spacing: -0.01em; margin: 0; padding: 0; background: none; }
+.sayfa-basligi + .sayfa-aciklama { display: inline; margin: 0 0 0 0.9rem; font-size: 0.9rem; color: var(--soluk); }
+.sayfa-basligi + .sayfa-aciklama::after { content: ""; display: block; margin-bottom: 2rem; }
+h1.sayfa-basligi:not(:has(+ .sayfa-aciklama)) { display: block; margin-bottom: 2rem; }
+
+/* Yazılar: kart satırları */
+.kartlar { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.kart {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 0.85rem 1rem; background: var(--ikincil); border-radius: 6px;
+  color: var(--metin); text-decoration: none;
+}
+.kart:hover { background: var(--isaret); }
+.kart-baslik { display: block; font-size: 1.05rem; line-height: 1.4; }
+.kart-bilgi { display: block; margin-top: 0.15rem; font-size: 0.8rem; color: var(--soluk); }
+.kart-ok { font-size: 1.4rem; line-height: 1; color: var(--soluk); }
+
+/* Notlar: kart zemininde zaman çizelgesi */
+.not-satir { padding: 1rem; border-top: 0; background: var(--ikincil); border-radius: 6px; margin-bottom: 0.5rem; }
+.not-satir:first-child { padding-top: 1rem; }
+
+/* Yazı / not sayfası */
+.geri-don { display: inline-block; margin: 0 0 1rem; font-size: 0.85rem; color: var(--soluk); text-decoration: none; }
+.geri-don:hover { color: var(--mavi); }
+.tek h1 { font-size: 2rem; }
+
+/* Ana sayfa: tüm liste bağlantıları */
+.tumu-bag { display: flex; flex-wrap: wrap; gap: 0.3rem 1.25rem; margin: 1.5rem 0 0; font-size: 0.9rem; }
+.tumu-bag a { text-decoration: none; }
+
+@media (max-width: 600px) {
+  .ust-kutu { flex-direction: column; gap: 0.9rem; }
+  .ust .menu { margin-top: 0; }
+  .sayfa-basligi + .sayfa-aciklama { display: block; margin: 0.3rem 0 1.75rem; }
+  .sayfa-basligi + .sayfa-aciklama::after { display: none; }
+  .tek h1 { font-size: 1.6rem; }
+}
+
+/* Ana sayfa: son yazılar, yalın ve sıkı */
+.son-baslik { margin: 0 0 0.6rem; font-size: 0.85rem; font-weight: 400; color: var(--soluk); }
+.sade-liste { list-style: none; margin: 0; padding: 0; }
+.sade-liste li { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem; padding: 0.65rem 0; border-top: var(--kesik); }
+.sade-liste li:first-child { border-top: 0; padding-top: 0.2rem; }
+.sade-liste li:last-child { border-bottom: var(--kesik); }
+.sade-liste a { color: var(--metin); text-decoration: none; line-height: 1.45; }
+.sade-liste a:hover { color: var(--mavi); }
+.sade-liste time { flex-shrink: 0; font-size: 0.82rem; color: var(--soluk); font-variant-numeric: tabular-nums; }
+.son-yazilar + .tumu-bag { margin-top: 0.8rem; }

@@ -5,7 +5,6 @@ gem "minima"
 
 group :jekyll_plugins do
   gem "jekyll-sitemap"
-  gem "jekyll-paginate"
 end
 
 platforms :mingw, :x64_mingw, :mswin, :jruby do
