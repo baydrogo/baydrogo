@@ -411,14 +411,25 @@ body { font-size: 18px; line-height: 1.7; }
 .karsilama .devami { white-space: nowrap; text-decoration: none; font-size: 0.9rem; }
 
 .akis-liste { list-style: none; margin: 0; padding: 0; }
-.akis-liste li { padding: 0.95rem 0; border-top: var(--kesik); }
+.akis-liste li { display: flex; gap: 1.25rem; align-items: baseline; padding: 0.7rem 0; border-top: var(--kesik); }
 .akis-liste li:first-child { border-top: 0; padding-top: 0; }
-.akis-baslik { font-size: 1.12rem; font-weight: 700; line-height: 1.35; color: var(--metin); text-decoration: none; }
-.akis-baslik:hover { color: var(--mavi); }
-.akis-liste .basliksiz .akis-baslik { font-weight: 400; }
-.akis-liste .ust-bilgi { margin: 0.25rem 0 0; }
-.akis-liste .ust-bilgi .p-category { margin-right: 0.15rem; }
+.akis-tarih { flex: 0 0 6.6rem; font-size: 0.82rem; color: var(--soluk); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.akis-sag { min-width: 0; }
+.akis-baslik { color: var(--metin); font-size: 1.05rem; font-weight: 400; line-height: 1.45; text-decoration: underline; text-decoration-color: var(--cizgi); text-underline-offset: 0.25em; }
+.akis-baslik:hover { color: var(--mavi); text-decoration-color: currentColor; }
+.akis-ek { display: inline; font-size: 0.78rem; color: var(--soluk); margin-left: 0.5rem; }
+.akis-ek > * { margin-right: 0.45rem; }
+.akis-ek a { color: var(--soluk); text-decoration: none; &:hover { color: var(--mavi); } }
+.akis-liste .basliksiz .akis-baslik { color: var(--metin); }
 
 @media (max-width: 600px) {
   .karsilama { grid-template-columns: 1fr; gap: 1rem; }
+  .akis-liste li { gap: 0.9rem; }
+  .akis-tarih { flex-basis: 5.9rem; font-size: 0.76rem; }
+  .akis-ek { display: block; margin: 0.1rem 0 0; }
 }
+
+/* Başlıklar daha ince */
+.site-adi { font-weight: 700; }
+.tek h1, .sayfa h1, .sayfa-basligi { font-weight: 600; letter-spacing: -0.01em; }
+.icerik, .not-metni { h2, h3, h4 { font-weight: 600; } }
