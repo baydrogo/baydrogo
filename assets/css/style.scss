@@ -507,7 +507,9 @@ h1.sayfa-basligi:not(:has(+ .sayfa-aciklama)) { display: block; margin-bottom: 2
 /* Ana sayfa: son yazılar, yalın ve sıkı */
 .son-baslik { margin: 0 0 0.6rem; font-size: 0.85rem; font-weight: 400; color: var(--soluk); }
 .sade-liste { list-style: none; margin: 0; padding: 0; }
-.sade-liste li { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem; padding: 0.3rem 0; }
+.sade-liste li { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem; padding: 0.65rem 0; border-top: var(--kesik); }
+.sade-liste li:first-child { border-top: 0; padding-top: 0.2rem; }
+.sade-liste li:last-child { border-bottom: var(--kesik); }
 .sade-liste a { color: var(--metin); text-decoration: none; line-height: 1.45; }
 .sade-liste a:hover { color: var(--mavi); }
 .sade-liste time { flex-shrink: 0; font-size: 0.82rem; color: var(--soluk); font-variant-numeric: tabular-nums; }
