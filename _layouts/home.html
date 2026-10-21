@@ -9,22 +9,17 @@ layout: default
 </section>
 {%- endif %}
 
-<ul class="akis-liste h-feed">
-  {%- for g in site.posts limit: 6 %}
-  {%- assign yazar = g.author | default: site.author %}
-  {%- assign _ay = g.date | date: "%-m" | minus: 1 %}
-  <li class="h-entry{% if g.tur == 'not' and g.baslikli != true %} basliksiz{% endif %}">
-    <time class="dt-published akis-tarih" datetime="{{ g.date | date_to_xmlschema }}">{{ g.date | date: "%d" }} {{ site.data.tr.kisa[_ay] }} {{ g.date | date: "%Y" }}</time>
-    <span class="akis-sag">
-      <a class="akis-baslik p-name u-url" href="{{ g.url | relative_url }}">{% include girdi-adi.html girdi=g %}</a>
-      <span class="akis-ek">
-        {%- if g.tur == "not" %}<span>not</span>{% endif %}
-        {%- for tag in g.tags %}<a class="p-category" href="{{ '/etiketler/' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a>{% endfor %}
-        {%- if yazar != site.author %}<span class="p-author">{{ yazar }}</span>{% endif %}
-      </span>
-    </span>
-  </li>
-  {%- endfor %}
-</ul>
-
-<p class="tumu-bag"><a href="{{ '/yazilar/' | relative_url }}">Tüm yazılar →</a> <a href="{{ '/notlar/' | relative_url }}">Tüm notlar →</a> <a href="{{ '/arsiv/' | relative_url }}">Arşiv →</a></p>
+<section class="son-yazilar">
+  <h2 class="son-baslik">Son yazılar</h2>
+  <ul class="sade-liste h-feed">
+    {%- assign yazilar = site.posts | where: "tur", "yazi" %}
+    {%- for g in yazilar limit: 5 %}
+    {%- assign _ay = g.date | date: "%-m" | minus: 1 %}
+    <li class="h-entry">
+      <a class="p-name u-url" href="{{ g.url | relative_url }}">{{ g.title }}</a>
+      <time class="dt-published" datetime="{{ g.date | date_to_xmlschema }}">{{ g.date | date: "%-d" }} {{ site.data.tr.kisa[_ay] }} {{ g.date | date: "%Y" }}</time>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+<p class="tumu-bag"><a href="{{ '/yazilar/' | relative_url }}">Tüm yazılar →</a></p>

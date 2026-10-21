@@ -404,7 +404,7 @@ body { font-size: 18px; line-height: 1.7; }
 /* Ana sayfa: karşılama + yalın liste */
 .karsilama {
   display: grid; grid-template-columns: 15rem 1fr; gap: 1.5rem; align-items: center;
-  margin: 0 0 2.25rem; padding-bottom: 2rem; border-bottom: var(--kesik);
+  margin: 0 0 2.75rem;
 }
 .karsilama-gorsel img { display: block; width: 100%; height: auto; border-radius: 4px; }
 .karsilama p { margin: 0; font-size: 0.98rem; line-height: 1.65; }
@@ -503,3 +503,12 @@ h1.sayfa-basligi:not(:has(+ .sayfa-aciklama)) { display: block; margin-bottom: 2
   .sayfa-basligi + .sayfa-aciklama::after { display: none; }
   .tek h1 { font-size: 1.6rem; }
 }
+
+/* Ana sayfa: son yazılar, yalın ve sıkı */
+.son-baslik { margin: 0 0 0.6rem; font-size: 0.85rem; font-weight: 400; color: var(--soluk); }
+.sade-liste { list-style: none; margin: 0; padding: 0; }
+.sade-liste li { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem; padding: 0.3rem 0; }
+.sade-liste a { color: var(--metin); text-decoration: none; line-height: 1.45; }
+.sade-liste a:hover { color: var(--mavi); }
+.sade-liste time { flex-shrink: 0; font-size: 0.82rem; color: var(--soluk); font-variant-numeric: tabular-nums; }
+.son-yazilar + .tumu-bag { margin-top: 0.8rem; }
