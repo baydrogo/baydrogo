@@ -1,7 +1,6 @@
 ---
 layout: default
 ---
-{%- if paginator.page == 1 %}
 {%- assign hakkinda = site.pages | where: "url", "/hakkinda/" | first %}
 {%- if hakkinda %}
 <section class="karsilama">
@@ -9,10 +8,9 @@ layout: default
   <p>{% if hakkinda.description %}{{ hakkinda.description }}{% else %}{{ hakkinda.content | markdownify | kesit: 57 }}{% endif %} <a class="devami" href="{{ hakkinda.url | relative_url }}">Hakkında →</a></p>
 </section>
 {%- endif %}
-{%- endif %}
 
 <ul class="akis-liste h-feed">
-  {%- for g in paginator.posts %}
+  {%- for g in site.posts limit: 6 %}
   {%- assign yazar = g.author | default: site.author %}
   {%- assign _ay = g.date | date: "%-m" | minus: 1 %}
   <li class="h-entry{% if g.tur == 'not' and g.baslikli != true %} basliksiz{% endif %}">
@@ -29,10 +27,4 @@ layout: default
   {%- endfor %}
 </ul>
 
-{%- if paginator.total_pages > 1 %}
-<nav class="sayfalama">
-  {%- if paginator.previous_page %}<a href="{{ paginator.previous_page_path | relative_url }}">← Daha yeni</a>{% endif %}
-  <span>{{ paginator.page }} / {{ paginator.total_pages }}</span>
-  {%- if paginator.next_page %}<a href="{{ paginator.next_page_path | relative_url }}">Daha eski →</a>{% endif %}
-</nav>
-{%- endif %}
+<p class="tumu-bag"><a href="{{ '/yazilar/' | relative_url }}">Tüm yazılar →</a> <a href="{{ '/notlar/' | relative_url }}">Tüm notlar →</a> <a href="{{ '/arsiv/' | relative_url }}">Arşiv →</a></p>
