@@ -433,3 +433,20 @@ body { font-size: 18px; line-height: 1.7; }
 .site-adi { font-weight: 700; }
 .tek h1, .sayfa h1, .sayfa-basligi { font-weight: 600; letter-spacing: -0.01em; }
 .icerik, .not-metni { h2, h3, h4 { font-weight: 600; } }
+
+/* Notlar sayfası: solda zaman damgası, sağda notun kendisi */
+.not-akisi { margin-top: 0.5rem; }
+.not-satir { display: grid; grid-template-columns: 6.6rem minmax(0, 1fr); gap: 1.25rem; padding: 1.4rem 0; border-top: var(--kesik); }
+.not-satir:first-child { border-top: 0; padding-top: 0.5rem; }
+.not-zaman { font-size: 0.82rem; line-height: 1.5; color: var(--soluk); text-decoration: none; font-variant-numeric: tabular-nums; padding-top: 0.2rem; }
+.not-zaman span { display: block; opacity: 0.75; }
+.not-zaman:hover { color: var(--mavi); }
+.not-baslik { font-size: 1.1rem; font-weight: 600; margin: 0 0 0.4rem; a { color: var(--metin); text-decoration: none; &:hover { color: var(--mavi); } } }
+.not-govde .e-content { margin: 0; }
+.not-govde .devami { white-space: nowrap; text-decoration: none; font-size: 0.9rem; }
+.not-etiketler { display: flex; flex-wrap: wrap; gap: 0.2rem 0.7rem; margin: 0.6rem 0 0; font-size: 0.78rem; a { color: var(--soluk); text-decoration: none; &:hover { color: var(--mavi); } } }
+
+@media (max-width: 600px) {
+  .not-satir { grid-template-columns: 1fr; gap: 0.35rem; }
+  .not-zaman span { display: inline; margin-left: 0.4rem; }
+}
