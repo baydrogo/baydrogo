@@ -337,3 +337,66 @@ a { color: var(--mavi); text-underline-offset: 0.15em; text-decoration-thickness
 .not-kisa a { font-family: var(--arayuz); font-size: 0.85rem; text-decoration: none; white-space: nowrap; }
 .kenar-etiketler .tumu { color: var(--mavi); }
 
+
+/* =============================================
+   Sade tema denemesi (dal: tasarim-sade)
+   markpitblado.me'den esinli, beyaz ağırlıklı tek sütun.
+   Yazı tipi Atkinson Hyperlegible Next; vurgu yine mavi.
+   ============================================= */
+
+:root {
+  --govde: "Atkinson Hyperlegible Next", system-ui, -apple-system, sans-serif;
+  --arayuz: "Atkinson Hyperlegible Next", system-ui, -apple-system, sans-serif;
+  --kesik: 1px dashed var(--cizgi);
+}
+
+body { font-size: 18px; line-height: 1.7; }
+
+.sade { max-width: 44rem; margin: 0 auto; padding: 2.25rem 1.5rem 2.5rem; }
+
+/* Üst */
+.ust { margin-bottom: 2.5rem; }
+.ust-satir { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.ust-kimlik { display: flex; align-items: center; gap: 0.55rem; }
+.site-adi { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em; margin: 0; }
+.ust-simgeler { display: flex; gap: 0.9rem; margin: 0; }
+.ust-simgeler a { color: var(--soluk); display: inline-flex; &:hover { color: var(--mavi); } }
+.ust .tanitim { margin: 0.35rem 0 1.1rem; font-size: 0.95rem; color: var(--soluk); }
+.menu {
+  flex-direction: row; flex-wrap: wrap; gap: 0.2rem 1.4rem; margin: 0;
+  padding: 0.55rem 0; border-top: var(--kesik); border-bottom: var(--kesik);
+}
+.menu a {
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--metin); text-decoration: none;
+}
+.menu a:hover { color: var(--mavi); }
+.menu a[aria-current="page"] { color: var(--mavi); font-weight: 700; text-decoration: underline; text-underline-offset: 0.3em; text-decoration-thickness: 2px; }
+
+/* Akış: sıkı, taranabilir liste */
+.girdi { padding: 1.15rem 0; border-top: var(--kesik); }
+.girdi:first-child { border-top: 0; padding-top: 0; }
+.girdi-baslik { font-size: 1.15rem; font-weight: 700; margin: 0 0 0.15rem; }
+.ust-bilgi { font-size: 0.78rem; margin-bottom: 0.35rem; }
+.girdi-yazi .ust-bilgi { margin-bottom: 0.35rem; }
+.p-summary, .not-kisa { font-size: 0.98rem; }
+
+/* Tek yazı / not */
+.tek h1, .sayfa h1, .sayfa-basligi { font-size: 2.1rem; font-weight: 800; letter-spacing: -0.015em; }
+.tek-not .not-metni { font-size: 1.05rem; }
+.icerik, .not-metni { h2, h3, h4 { font-weight: 700; } }
+.geri-baglantilar { border-top: var(--kesik); }
+
+/* Alt */
+.alt { margin-top: 3.5rem; padding-top: 1.25rem; border-top: var(--kesik); font-size: 0.82rem; color: var(--soluk); }
+.alt-etiketler { display: flex; flex-wrap: wrap; gap: 0.2rem 0.9rem; margin: 0 0 0.75rem; }
+.alt-etiketler a { color: var(--soluk); text-decoration: none; &:hover { color: var(--mavi); } }
+.alt-etiketler .tumu { color: var(--mavi); }
+.alt-satir { margin: 0; }
+.alt-satir a { color: var(--soluk); &:hover { color: var(--mavi); } }
+
+@media (max-width: 480px) {
+  .sade { padding: 1.5rem 1.15rem 2rem; }
+  body { font-size: 17px; }
+  .menu { gap: 0.2rem 1.05rem; }
+}
