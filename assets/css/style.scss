@@ -583,3 +583,19 @@ a:hover { text-decoration: underline; }
   .banner { margin-bottom: 1.75rem; }
   .banner img { aspect-ratio: 3 / 1; }
 }
+
+/* Yazı sonu: Bağlantılı / Benzer yazılar da gri kartlarla */
+.geri-baglantilar li, .geri-baglantilar li::before { padding: 0; margin: 0; content: none; }
+.geri-baglantilar .kartlar { margin-top: 0.2rem; }
+.kart-baglam { display: block; margin-top: 0.3rem; font-size: 14px; line-height: 1.5; color: var(--soluk); }
+.ilgili .kartlar { margin-top: 0.2rem; }
+.geri-baglantilar + .ilgili, .tek + .ilgili { margin-top: 0; }
+.ilgili .bolum-etiketi { margin-top: 2.25rem; }
+.geri-baglantilar li > a.kart { font-family: var(--govde); font-size: inherit; font-weight: 400; color: var(--metin); }
+.geri-baglantilar li > a.kart:hover { text-decoration: none; }
+.geri-baglantilar li { margin: 0; }
+.geri-baglantilar h2, .ilgili .bolum-etiketi { margin: 0 0 0.6rem; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--soluk); }
+.ilgili .bolum-etiketi { margin-top: 2.25rem; }
+.kart-baglam { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
+.geri-baglantilar h2, .ilgili .bolum-etiketi { font-size: 14px; letter-spacing: 0; text-transform: none; }
+.grup-basligi { font-size: 14px; letter-spacing: 0; text-transform: none; }

@@ -2,11 +2,16 @@
 {%- if gb and gb.size > 0 %}
 <section class="geri-baglantilar">
   <h2>Bağlantılı yazılar</h2>
-  <ul>
+  <ul class="kartlar">
     {%- for b in gb %}
     <li>
-      <a href="{{ b.url | relative_url }}">{{ b.baslik }}</a>
-      {%- if b.baglam != "" %}<p>{{ b.baglam }}</p>{% endif %}
+      <a class="kart" href="{{ b.url | relative_url }}">
+        <span class="kart-govde">
+          <span class="kart-baslik">{{ b.baslik }}</span>
+          {%- if b.baglam != "" %}<span class="kart-baglam">{{ b.baglam }}</span>{% endif %}
+        </span>
+        <span class="kart-ok" aria-hidden="true">›</span>
+      </a>
     </li>
     {%- endfor %}
   </ul>
