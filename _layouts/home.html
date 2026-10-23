@@ -1,14 +1,6 @@
 ---
 layout: default
 ---
-{%- assign hakkinda = site.pages | where: "url", "/hakkinda/" | first %}
-{%- if hakkinda %}
-<section class="karsilama">
-  <a class="karsilama-gorsel" href="{{ hakkinda.url | relative_url }}"><img src="{{ '/assets/img/obsidian/drogo.webp' | relative_url }}" alt="Kaledeki odasında, çöle bakan pencerenin önünde masada yazı yazan bir subay" width="1280" height="853"></a>
-  <p>{% if hakkinda.description %}{{ hakkinda.description }}{% else %}{{ hakkinda.content | markdownify | kesit: 57 }}{% endif %} <a class="devami" href="{{ hakkinda.url | relative_url }}">Hakkında →</a></p>
-</section>
-{%- endif %}
-
 <section class="son-yazilar">
   <h2 class="son-baslik">Son yazılar</h2>
   <ul class="sade-liste h-feed">

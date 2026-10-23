@@ -517,3 +517,4 @@ h1.sayfa-basligi:not(:has(+ .sayfa-aciklama)) { display: block; margin-bottom: 2
 .sade-liste a:hover { color: var(--mavi); }
 .sade-liste time { flex-shrink: 0; font-size: 0.82rem; color: var(--soluk); font-variant-numeric: tabular-nums; }
 .son-yazilar + .tumu-bag { margin-top: 0.8rem; }
+.gizli { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
