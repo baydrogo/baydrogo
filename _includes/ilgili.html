@@ -8,9 +8,9 @@
 {%- if related.size > 0 %}
 <section class="ilgili">
   <p class="bolum-etiketi">Benzer yazılar</p>
-  <ul class="liste">
+  <ul class="kartlar">
     {%- for p in related limit: 5 %}
-    {% include satir.html girdi=p %}
+    {% include kart.html girdi=p %}
     {%- endfor %}
   </ul>
 </section>
