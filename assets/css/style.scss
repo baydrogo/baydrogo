@@ -557,3 +557,12 @@ a:hover { text-decoration: underline; }
 .alt-satir { display: flex; align-items: center; flex-wrap: wrap; gap: 0.3rem; }
 .alt .karpuz { transform: rotate(-22deg); margin-right: 0.35rem; }
 .ust .menu a[aria-current="page"]:hover { text-decoration: underline; }
+
+/* Üst: solda ad + açıklama, sağda menü (telefonda menü alta iner) */
+.ust-kutu { flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 0.75rem 2rem; }
+.ust .tanitim { margin: 0.15rem 0 0; font-size: 14px; line-height: 1.45; color: var(--soluk); }
+.ust .menu { margin-top: 0.45rem; flex-wrap: nowrap; }
+@media (max-width: 600px) {
+  .ust-kutu { flex-direction: column; }
+  .ust .menu { margin-top: 0; flex-wrap: wrap; }
+}

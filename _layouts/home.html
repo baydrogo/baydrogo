@@ -2,7 +2,7 @@
 layout: default
 ---
 <section class="son-yazilar">
-  <h2 class="son-baslik">Son yazılar</h2>
+  <h2 class="gizli">Son yazılar</h2>
   <ul class="sade-liste h-feed">
     {%- assign yazilar = site.posts | where: "tur", "yazi" %}
     {%- for g in yazilar limit: 5 %}
