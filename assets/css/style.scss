@@ -534,13 +534,9 @@ h1.sayfa-basligi:not(:has(+ .sayfa-aciklama)) { display: block; margin-bottom: 2
 body { font-size: 17px; line-height: 24px; letter-spacing: -0.003em; }
 a { text-decoration: none; }
 a:hover { text-decoration: underline; }
-.sade { max-width: 37rem; }
+/* Genişlik: metin sütunu ~576px ≈ sistem yazı tipinde satır başına ~70 karakter (önerilen 50–75, WCAG üst sınırı 80) */
+.sade { max-width: 39rem; }
 
-.ust { margin-bottom: 2.5rem; }
-.ust-kutu { gap: 0.6rem; }
-.site-adi { font-size: 17px; font-weight: 600; letter-spacing: 0; color: var(--metin); }
-.ust .menu a { font-size: 15px; }
-.ust .menu a[aria-current="page"] { text-decoration: none; color: var(--metin); font-weight: 600; }
 
 .tek h1, .sayfa h1 { font-size: 28px; line-height: 34px; font-weight: 600; letter-spacing: 0; }
 .sayfa-basligi { font-size: 28px; line-height: 34px; font-weight: 600; }
@@ -560,3 +556,4 @@ a:hover { text-decoration: underline; }
 .alt { font-size: 13px; }
 .alt-satir { display: flex; align-items: center; flex-wrap: wrap; gap: 0.3rem; }
 .alt .karpuz { transform: rotate(-22deg); margin-right: 0.35rem; }
+.ust .menu a[aria-current="page"]:hover { text-decoration: underline; }
