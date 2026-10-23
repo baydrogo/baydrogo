@@ -4,7 +4,7 @@
       <div class="ust-kimlik">
         <a class="site-adi p-name u-url u-uid" href="{{ '/' | relative_url }}">{{ site.title }}</a>
       </div>
-      <p class="tanitim p-note">{{ site.description }}</p>
+      <p class="p-note gizli">{{ site.description }}</p>
     </div>
     <nav class="menu">
       <a href="{{ '/' | relative_url }}"{% if include.bolum == "akis" %} aria-current="page"{% endif %}>Blog</a>
