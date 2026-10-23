@@ -517,3 +517,61 @@ h1.sayfa-basligi:not(:has(+ .sayfa-aciklama)) { display: block; margin-bottom: 2
 .sade-liste a:hover { color: var(--mavi); }
 .sade-liste time { flex-shrink: 0; font-size: 0.82rem; color: var(--soluk); font-variant-numeric: tabular-nums; }
 .son-yazilar + .tumu-bag { margin-top: 0.8rem; }
+.gizli { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* =============================================
+   Andy Matuschak tipografisi (2026-10-23 denemesi)
+   Sistem yazı tipi, 17/24 metin, 28px yarı kalın başlık, alt çizgisiz bağlantı.
+   ============================================= */
+:root {
+  --govde: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --arayuz: var(--govde);
+  --metin: #333333;
+  --soluk: #8a8a8a;
+}
+@media (prefers-color-scheme: dark) { :root { --metin: #dddddd; --soluk: #8f8f8f; } }
+
+body { font-size: 17px; line-height: 24px; letter-spacing: -0.003em; }
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+/* Genişlik: metin sütunu ~576px ≈ sistem yazı tipinde satır başına ~70 karakter (önerilen 50–75, WCAG üst sınırı 80) */
+.sade { max-width: 39rem; }
+
+
+.tek h1, .sayfa h1 { font-size: 28px; line-height: 34px; font-weight: 600; letter-spacing: 0; }
+.sayfa-basligi { font-size: 28px; line-height: 34px; font-weight: 600; }
+.sayfa-basligi + .sayfa-aciklama { font-size: 15px; }
+.icerik, .not-metni {
+  p, ul, ol, blockquote, figure { margin-bottom: 17px; }
+  h2 { font-size: 21px; line-height: 28px; font-weight: 600; }
+  h3, h4 { font-size: 17px; line-height: 24px; font-weight: 600; }
+  a { text-decoration: none; }
+}
+.tek-not .not-metni { font-size: 17px; }
+.ust-bilgi, .kart-bilgi, .not-zaman, .sade-liste time { font-size: 13px; }
+.etiketler, .not-etiketler, .alt-etiketler, .akis-ek { font-size: 13px; }
+.sade-liste a, .kart-baslik { font-size: 17px; }
+.son-baslik { font-size: 13px; }
+
+.alt { font-size: 13px; }
+.alt-satir { display: flex; align-items: center; flex-wrap: wrap; gap: 0.3rem; }
+.alt .karpuz { transform: rotate(-22deg); margin-right: 0.35rem; }
+.ust .menu a[aria-current="page"]:hover { text-decoration: underline; }
+
+/* Üst: solda ad + açıklama, sağda menü (telefonda menü alta iner) */
+.ust-kutu { flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 0.75rem 2rem; }
+.ust .tanitim { margin: 0.15rem 0 0; font-size: 14px; line-height: 1.45; color: var(--soluk); }
+.ust-kutu { align-items: baseline; }
+.ust .menu { margin-top: 0; flex-wrap: nowrap; }
+@media (max-width: 600px) {
+  .ust-kutu { flex-direction: column; }
+  .ust .menu { margin-top: 0; flex-wrap: wrap; }
+}
+
+/* Alt bilgi: içerik kısa olsa da ekranın en altında (sabit şerit değil) */
+.sade { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; }
+.sade > .icerik-alani { flex: 1 0 auto; }
+.alt { margin-top: 4rem; padding-bottom: 0.5rem; }
+@media (max-width: 600px) {
+  .alt { margin-top: 3rem; }
+}

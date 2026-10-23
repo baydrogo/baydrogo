@@ -8,7 +8,6 @@ permalink: /notlar/
 <div class="not-akisi h-feed">
   {%- assign notlar = site.posts | where: "tur", "not" %}
   {%- for g in notlar %}
-  {%- assign uzun = g.content | kelime_sayisi %}
   {%- assign _ay = g.date | date: "%-m" | minus: 1 %}
   <article class="not-satir h-entry">
     <a class="not-zaman u-url" href="{{ g.url | relative_url }}">
@@ -16,11 +15,7 @@ permalink: /notlar/
     </a>
     <div class="not-govde">
       {%- if g.baslikli %}<h2 class="not-baslik p-name"><a href="{{ g.url | relative_url }}">{{ g.title }}</a></h2>{% endif %}
-      {%- if uzun > 100 %}
-      <p class="e-content">{% if g.description %}{{ g.description }}{% else %}{{ g.content | kesit: 50 }}{% endif %} <a class="devami" href="{{ g.url | relative_url }}">devamı →</a></p>
-      {%- else %}
       <div class="e-content not-metni">{{ g.content }}</div>
-      {%- endif %}
       {%- if g.tags.size > 0 %}
       <p class="not-etiketler">{% for tag in g.tags %}<a class="p-category" href="{{ '/etiketler/' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a>{% endfor %}</p>
       {%- endif %}
