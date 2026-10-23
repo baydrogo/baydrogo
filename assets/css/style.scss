@@ -575,3 +575,11 @@ a:hover { text-decoration: underline; }
 @media (max-width: 600px) {
   .alt { margin-top: 3rem; }
 }
+
+/* Ana sayfa: üstte ince Drogo şeridi (4:1) */
+.banner { display: block; margin: 0 0 2.25rem; }
+.banner img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 1; object-fit: cover; border-radius: 4px; }
+@media (max-width: 600px) {
+  .banner { margin-bottom: 1.75rem; }
+  .banner img { aspect-ratio: 3 / 1; }
+}
