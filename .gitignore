@@ -9,3 +9,4 @@ vendor/
 CLAUDE.local.md
 .claude/
 Gemfile.lock
+scripts/kasa.yolu

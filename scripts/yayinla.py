@@ -34,9 +34,24 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-KASA = Path(os.environ.get("NOTOLOJI_KASA", "/Users/eduman/Desktop/eduman/OBSIDIAN"))
-KLASOR = os.environ.get("NOTOLOJI_KLASOR", "Baydrogo")
 REPO = Path(__file__).resolve().parent.parent
+
+
+def kasa_yolu():
+    """Obsidian kasasının yeri depoya yazılmaz (kişisel klasör adları herkese açık olmasın).
+    Önce BAYDROGO_KASA ortam değişkenine (Obsidian eklentisi bunu verir), sonra Git'e
+    girmeyen scripts/kasa.yolu dosyasına bakılır."""
+    yol = os.environ.get("BAYDROGO_KASA") or os.environ.get("NOTOLOJI_KASA")
+    dosya = REPO / "scripts" / "kasa.yolu"
+    if not yol and dosya.exists():
+        yol = dosya.read_text(encoding="utf-8").strip()
+    if not yol:
+        sys.exit("Kasa yolu bilinmiyor: BAYDROGO_KASA değişkenini ayarla ya da scripts/kasa.yolu dosyasına kasanın tam yolunu yaz.")
+    return Path(yol).expanduser()
+
+
+KASA = kasa_yolu()
+KLASOR = os.environ.get("BAYDROGO_KLASOR") or os.environ.get("NOTOLOJI_KLASOR") or "Baydrogo"
 GORSEL_DIZIN = REPO / "assets" / "img" / "obsidian"
 GORSEL_URL = "/assets/img/obsidian/"
 SITE = "https://baydrogo.com"
