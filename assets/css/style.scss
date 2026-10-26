@@ -601,11 +601,23 @@ a:hover { text-decoration: underline; }
 .grup-basligi { font-size: 14px; letter-spacing: 0; text-transform: none; }
 
 /* =============================================
-   Hayali deneme: Catppuccin Frappé renkleri + JetBrains Mono
-   (dal: deneme-catppuccin — yayına alınmayacak)
+   Tema seçimi: açık (varsayılan beyaz) ve koyu (Catppuccin Frappé + JetBrains Mono).
+   Okur seçmediyse cihaz ayarı (prefers-color-scheme) geçerli; seçerse
+   <html data-tema="acik|koyu"> (assets/js/tema.js, tercih localStorage'da).
    ============================================= */
-:root, :root * { color-scheme: dark; }
-:root {
+
+@mixin acik-tema {
+  --zemin: #ffffff;
+  --ikincil: #f5f5f5;
+  --metin: #333333;
+  --soluk: #8a8a8a;
+  --cizgi: #e3e3e3;
+  --mavi: #1f5fbf;
+  --isaret: rgba(31, 95, 191, 0.08);
+  color-scheme: light;
+}
+
+@mixin koyu-tema {
   --zemin: #303446;      /* base */
   --ikincil: #414559;    /* surface0: kartlar */
   --metin: #c6d0f5;      /* text */
@@ -619,31 +631,46 @@ a:hover { text-decoration: underline; }
   --isaret: rgba(140, 170, 238, 0.14);
   --govde: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
   --arayuz: var(--govde);
+  color-scheme: dark;
+
+  body { font-size: 15px; line-height: 1.75; letter-spacing: 0; }
+  .site-adi { color: var(--nane); }
+  .ust .menu a { color: var(--metin); }
+  .ust .menu a:hover { color: var(--nane); }
+  .ust .menu a[aria-current="page"] { color: var(--sari); text-decoration-color: var(--sari); }
+  .tek h1, .sayfa h1, .sayfa-basligi { color: var(--nane); font-size: 24px; line-height: 32px; }
+  .icerik h2, .icerik h3, .not-metni h2, .not-metni h3 { color: var(--sari); }
+  .icerik blockquote { border-left-color: var(--nane); color: var(--soluk); }
+  .icerik code, .not-metni code { background: var(--ikincil); color: var(--pembe); }
+  .sade-liste a, .kart-baslik { color: var(--metin); font-size: 15px; }
+  .sade-liste a:hover, .kart:hover .kart-baslik { color: var(--nane); }
+  .sade-liste time, .kart-bilgi time, .ust-bilgi time, .not-zaman { color: var(--sari); }
+  .etiketler a, .not-etiketler a, .alt-etiketler a, .akis-ek a { color: var(--pembe); }
+  .kart:hover { background: var(--cizgi); }
+  .geri-baglantilar h2, .ilgili .bolum-etiketi { color: var(--yesil); }
+  .banner img { filter: saturate(0.9) brightness(0.92); }
+  .tema-dugme .ay { display: none; }
+  .tema-dugme .gunes { display: inline; }
+  @media (max-width: 600px) {
+    .ust .menu { gap: 0.2rem 0.75rem; }
+    .ust .menu a { font-size: 13.5px; }
+  }
 }
+
+html[data-tema="acik"] { @include acik-tema; }
+html[data-tema="koyu"] { @include koyu-tema; }
 @media (prefers-color-scheme: dark) {
-  :root { --zemin: #303446; --ikincil: #414559; --metin: #c6d0f5; --soluk: #a5adce; --cizgi: #51576d; --mavi: #8caaee; }
+  html:not([data-tema="acik"]) { @include koyu-tema; }
 }
 html, body { background: var(--zemin); color: var(--metin); }
-body { font-size: 15px; line-height: 1.75; letter-spacing: 0; }
 
-.site-adi { color: var(--nane); }
-.ust .menu a { color: var(--metin); }
-.ust .menu a:hover { color: var(--nane); }
-.ust .menu a[aria-current="page"] { color: var(--sari); text-decoration-color: var(--sari); }
-
-.tek h1, .sayfa h1, .sayfa-basligi { color: var(--nane); font-size: 24px; line-height: 32px; }
-.icerik h2, .icerik h3, .not-metni h2, .not-metni h3 { color: var(--sari); }
-.icerik blockquote { border-left-color: var(--nane); color: var(--soluk); }
-.icerik code, .not-metni code { background: var(--ikincil); color: var(--pembe); }
-
-.sade-liste a, .kart-baslik { color: var(--metin); font-size: 15px; }
-.sade-liste a:hover, .kart:hover .kart-baslik { color: var(--nane); }
-.sade-liste time, .kart-bilgi time, .ust-bilgi time, .not-zaman { color: var(--sari); }
-.ust-bilgi, .kart-bilgi { color: var(--soluk); }
-.etiketler a, .not-etiketler a, .alt-etiketler a, .akis-ek a { color: var(--pembe); }
-.kart { background: var(--ikincil); }
-.kart:hover { background: #51576d; }
-.not-satir { background: var(--ikincil); }
-.geri-baglantilar h2, .ilgili .bolum-etiketi { color: var(--yesil); }
-.alt, .alt-satir a { color: var(--soluk); }
-.banner img { filter: saturate(0.9) brightness(0.92); }
+/* Tema düğmesi (menünün sonunda) */
+.tema-dugme {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.9rem; height: 1.9rem; margin: -0.3rem -0.4rem -0.3rem 0.1rem; padding: 0;
+  border: 0; border-radius: 50%; background: none; color: var(--soluk); cursor: pointer;
+}
+.tema-dugme:hover { color: var(--metin); background: var(--ikincil); }
+.tema-dugme svg { width: 17px; height: 17px; }
+.tema-dugme .gunes { display: none; }
+.ust .menu { align-items: center; }
