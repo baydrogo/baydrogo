@@ -713,3 +713,46 @@ html[data-tema="acik"], html:not([data-tema="koyu"]) { --metin: #171717; }
 @media (max-width: 600px) {
   .tek h1, .sayfa h1 { font-size: 34px; line-height: 40px; }
 }
+
+/* Üst ve alt: boydan boya ince çizgiyle ayrılır; üst kısım kaydırırken tepede kalır */
+.sade { padding-top: 0; }
+header.ust {
+  position: sticky; top: 0; z-index: 20;
+  margin: 0 0 3.5rem; padding: 18px 0;
+  background: var(--zemin);
+  box-shadow: 0 0 0 100vmax var(--zemin);
+  clip-path: inset(0 -100vmax -1px);
+}
+header.ust::after, .alt::before {
+  content: ""; position: absolute; left: 50%; width: 100vw; height: 1px;
+  transform: translateX(-50%); background: var(--cizgi);
+}
+header.ust::after { bottom: 0; }
+.ust .menu { gap: 0.15rem; }
+.ust .menu a { padding: 0.28rem 0.7rem; border-radius: 999px; }
+.ust .menu a[aria-current="page"] { text-decoration: none; color: var(--metin); background: var(--ikincil); font-weight: 500; }
+.ust .menu a:hover { color: var(--metin); background: var(--ikincil); }
+.tema-dugme { margin-left: 0.6rem; }
+
+.alt {
+  position: relative; margin-top: 5rem; padding: 22px 0 24px;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+  border-top: 0; font-size: 15px; color: var(--soluk);
+}
+.alt::before { top: 0; }
+.alt p { margin: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 0.2rem 1.1rem; }
+.alt-sol { gap: 0.5rem !important; }
+.alt a { color: var(--soluk); text-decoration: none; }
+.alt a:hover { color: var(--metin); }
+.alt .karpuz { transform: rotate(-22deg); }
+
+@media (max-width: 600px) {
+  header.ust { position: relative; padding: 14px 0; margin-bottom: 2.5rem; }
+  .ust .menu { margin-left: -0.6rem; }
+  .ust .menu a { padding: 0.25rem 0.55rem; font-size: 14.5px; }
+  .tema-dugme { margin-left: 0.2rem; }
+  .alt { flex-direction: column; align-items: flex-start; margin-top: 3.5rem; font-size: 14px; }
+}
+
+/* Ayraçlar: kesik çizgi yerine üst/alt kısımdakiyle aynı ince düz çizgi */
+:root { --kesik: 1px solid var(--cizgi); }
