@@ -607,8 +607,8 @@ a:hover { text-decoration: underline; }
    ============================================= */
 
 @mixin acik-tema {
-  --zemin: #ffffff;
-  --ikincil: #f5f5f5;
+  --zemin: #fafafa;
+  --ikincil: #eeeeee;
   --metin: #333333;
   --soluk: #8a8a8a;
   --cizgi: #e3e3e3;
@@ -756,3 +756,50 @@ header.ust::after { bottom: 0; }
 
 /* Ayraçlar: kesik çizgi yerine üst/alt kısımdakiyle aynı ince düz çizgi */
 :root { --kesik: 1px solid var(--cizgi); }
+
+
+/* =============================================
+   Zemin #fafafa; mavi vurgu yok: bağlantılar metin renginde, ince gri alt çizgiyle.
+   Etiketler yazının sonunda yuvarlak "hap"lar; Bağlantılı/Benzer yazılar sade liste.
+   ============================================= */
+@media not (prefers-color-scheme: dark) {
+  html:not([data-tema="koyu"]) { --zemin: #fafafa; --ikincil: #eeeeee; --cizgi: #e6e6e6; }
+}
+html[data-tema="acik"] { --cizgi: #e6e6e6; }
+
+/* Bağlantılar */
+a { color: var(--metin); text-decoration: none; }
+a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+.icerik a, .not-metni a, .tumu-bag a {
+  color: var(--metin);
+  text-decoration: underline; text-decoration-color: var(--soluk);
+  text-decoration-thickness: 1px; text-underline-offset: 0.2em;
+}
+.icerik a:hover, .not-metni a:hover, .tumu-bag a:hover { text-decoration-color: var(--metin); }
+.sade-liste a:hover, .akis-baslik:hover, .kart:hover .kart-baslik, .geri-don:hover,
+.alt a:hover, .ust-bilgi a:hover, .not-baslik a:hover { color: var(--metin); text-decoration: underline; text-decoration-color: currentColor; }
+.ust .menu a:hover, .ust .menu a[aria-current="page"] { color: var(--metin); text-decoration: none; }
+.kart:hover { background: var(--cizgi); text-decoration: none; }
+.site-adi:hover { color: var(--metin); text-decoration: none; }
+
+/* Etiketler: yazının sonunda yuvarlak haplar */
+.etiket-haplari { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 2.5rem 0 0; }
+.etiket-haplari a {
+  padding: 6px 15px 7px; border-radius: 999px; background: var(--ikincil);
+  font-size: 14px; line-height: 1.2; color: var(--metin); text-decoration: none;
+  transition: background-color .15s, color .15s;
+}
+.etiket-haplari a:hover { background: var(--metin); color: var(--zemin); text-decoration: none; }
+
+/* Bağlantılı / Benzer yazılar: kart değil, sade liste */
+.geri-baglantilar .kartlar, .ilgili .kartlar { display: block; }
+.geri-baglantilar .kart, .ilgili .kart {
+  display: block; padding: 0.85rem 0; background: none; border-radius: 0; border-top: var(--kesik);
+}
+.geri-baglantilar li:first-child .kart, .ilgili li:first-child .kart { border-top: 0; padding-top: 0.3rem; }
+.geri-baglantilar .kart:hover, .ilgili .kart:hover { background: none; }
+.geri-baglantilar .kart-ok, .ilgili .kart-ok { display: none; }
+.geri-baglantilar .kart-baslik, .ilgili .kart-baslik { font-weight: 500; }
+/* Mavi vurgu kalmasın: eski kurallarda geçen --mavi de metin rengine eşit */
+html[data-tema], html:not([data-tema]) { --mavi: var(--metin); }
+.sonsuz { color: var(--soluk); }
