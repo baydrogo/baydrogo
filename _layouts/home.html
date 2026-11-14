@@ -4,16 +4,20 @@ layout: default
 <a class="banner" href="{{ '/hakkinda/' | relative_url }}"><img src="{{ '/assets/img/drogo-banner.webp' | relative_url }}" alt="Kaledeki odasında, çöle bakan pencerenin önünde masada yazı yazan bir subay" width="1200" height="300"></a>
 
 <section class="son-yazilar">
-  <h2 class="gizli">Son yazılar</h2>
+  <h2 class="gizli">Son yazılar ve notlar</h2>
   <ul class="sade-liste h-feed">
-    {%- assign yazilar = site.posts | where: "tur", "yazi" %}
-    {%- for g in yazilar limit: 5 %}
+    {%- for g in site.posts limit: 10 %}
     {%- assign _ay = g.date | date: "%-m" | minus: 1 %}
-    <li class="h-entry">
-      <a class="p-name u-url" href="{{ g.url | relative_url }}">{{ g.title }}</a>
-      <time class="dt-published" datetime="{{ g.date | date_to_xmlschema }}">{{ g.date | date: "%-d" }} {{ site.data.tr.kisa[_ay] }} {{ g.date | date: "%Y" }}</time>
+    <li class="h-entry{% if g.tur == 'not' %} not-girdisi{% endif %}">
+      <a class="p-name u-url" href="{{ g.url | relative_url }}">
+        {%- if g.tur == "not" and g.baslikli != true %}{{ g.content | kesit: 10 }}{% else %}{{ g.title }}{% endif -%}
+      </a>
+      <span class="liste-sag">
+        {%- if g.tur == "not" %}<span class="tur-isareti">not</span>{% endif -%}
+        <time class="dt-published" datetime="{{ g.date | date_to_xmlschema }}">{{ g.date | date: "%-d" }} {{ site.data.tr.kisa[_ay] }} {{ g.date | date: "%Y" }}</time>
+      </span>
     </li>
     {%- endfor %}
   </ul>
 </section>
-<p class="tumu-bag"><a href="{{ '/yazilar/' | relative_url }}">Tüm yazılar →</a></p>
+<p class="tumu-bag"><a href="{{ '/yazilar/' | relative_url }}">Tüm yazılar →</a><a href="{{ '/notlar/' | relative_url }}">Tüm notlar →</a></p>
