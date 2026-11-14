@@ -6,6 +6,7 @@ Kasadaki `Baydrogo/` klasörünü siteyle eşitler, commit edip GitHub'a yükler
 
 Kasada:
   tür: not            → not                (_posts/notlar/); `başlık` verilirse başlıklı not
+                                           (başlıksız not /YYYY/MM/DD/ilk-kelimeler/, başlıklı not /baslik/)
   tür: yazı           → başlıklı yazı      (_posts/yazilar/), başlık = dosya adı ya da `başlık`
   tür: sayfa          → sabit sayfa        (sayfalar/), örn. Hakkında
   tür yoksa           → yayımlanmaz (taslak)
@@ -190,7 +191,7 @@ class Girdi:
     def url(self):
         if self.ozel_adres:
             return self.ozel_adres
-        if self.tur == "not":
+        if self.tur == "not" and not self.not_basligi:
             return self.tarih.strftime("/%Y/%m/%d/") + self.adres + "/"
         return "/" + self.adres + "/"
 
@@ -290,7 +291,9 @@ def donustur(g, yayimlananlar, dosyalar, gorseller):
     yazar = al(g.ozellik, "yazar")
     if yazar:
         on.append(f"author: {yaml_metin(liste(yazar)[0])}")
-    on.append(f"permalink: {g.ozel_adres}" if g.ozel_adres else f"slug: {g.adres}")
+    # Başlıklı notun adresi tarihsizdir; notların Jekyll'deki tarihli kuralını ezer
+    tarihsiz = g.ozel_adres or (g.tur == "not" and g.not_basligi and g.url)
+    on.append(f"permalink: {tarihsiz}" if tarihsiz else f"slug: {g.adres}")
     etiketler = [e.lstrip("#") for e in liste(al(g.ozellik, "tags", "etiketler"))]
     on.append("tags: [" + ", ".join(yaml_metin(e) for e in etiketler) + "]")
     on.append(kaynak)
@@ -360,6 +363,16 @@ def main():
         git("pull", "--rebase", "--autostash", "-q")
 
     girdiler = kasayi_oku()
+    # İlk kez yayımlanan bir girdinin adresi başka bir girdininkiyle çakışırsa sonuna -2, -3… eklenir
+    alinmis = {g.url for g in girdiler if "adres" not in g.eklenecek}
+    for g in girdiler:
+        if "adres" in g.eklenecek:
+            kok, n = g.adres, 2
+            while g.url in alinmis:
+                g.adres = f"{kok}-{n}"
+                n += 1
+            g.eklenecek["adres"] = g.dosya_adi = g.adres
+        alinmis.add(g.url)
     adresler = {}
     for g in girdiler:
         if g.url in adresler:

@@ -2,7 +2,7 @@
 date: 2026-11-14 20:13:00 +0300
 title: "Çalışma düzenini ikiye bölmek"
 description: "Fatih Arslan'ın ve Austin Kleon'un çalışma düzenini dijital ve analog alanlara ayırma fikri."
-slug: calisma-duzenini-ikiye-bolmek
+permalink: /calisma-duzenini-ikiye-bolmek/
 tags: ["rutin"]
 kaynak: "Baydrogo/Çalışma düzenini ikiye bölmek.md"
 ---

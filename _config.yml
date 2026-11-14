@@ -32,7 +32,8 @@ timezone: Europe/Istanbul
 markdown: kramdown
 highlighter: rouge
 
-# Yazılar: _posts/ (başlıklı). Notlar: _posts/notlar/ (başlıksız, adres ilk kelimelerden).
+# Yazılar: _posts/ (başlıklı). Notlar: _posts/notlar/, adres /YYYY/MM/DD/ilk-kelimeler/;
+# başlıklı notlarda yayın betiği tarihsiz `permalink:` yazar.
 defaults:
   - scope:
       path: "_posts"
